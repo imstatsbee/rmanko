@@ -1,9 +1,8 @@
 # rmanko
 
-Last update on 2021-JAN-16
-Maintainer: Chel Hee Lee <chelhee.lee@ucalgary.ca> 
-The translation is outdated.  
+To offer your help with this translation project, please contact Chel Hee Lee <<chelhee.lee@ucalgary.ca>>. 
 
+Note: The translation is outdated. The next update will be on May 01, 2021.
 
 An Introduction to R [English](https://cran.r-project.org/doc/manuals/r-devel/R-intro.html){target="_blank"} | [(Korean)](./R-intro-ko.html){target="_blank"}
 
