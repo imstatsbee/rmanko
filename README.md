@@ -1,6 +1,6 @@
 # rmanko
 
-To offer your help with this translation project, please contact Chel Hee Lee <<chelhee.lee@ucalgary.ca>>. 
+To offer your help with this translation project, please contact [Chel Hee Lee](mailto:chelhee.lee@ucalgary.ca). 
 
 Note: The translation is outdated. The next update will be on May 01, 2021.
 
