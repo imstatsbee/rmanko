@@ -4,7 +4,7 @@ To offer your help with this translation project, please contact [Chel Hee Lee](
 
 ## Manuals 
 
-* **An Introduction to R** [English](https://cran.r-project.org/doc/manuals/r-devel/R-intro.html){:target="_blank"} | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-intro-ko.html) | [by ChatGPT](#)
+* **An Introduction to R** [English](https://cran.r-project.org/doc/manuals/r-devel/R-intro.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-intro-ko.html) | [by ChatGPT](#)
 
 * **R Data Import/Export** [English](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) | [Korean by Human](./https://imstatsbee.github.io/rmanko/inst/doc/R-data-ko.html)  | [by ChatGPT](#)
 
