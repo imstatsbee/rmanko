@@ -2,15 +2,21 @@
 
 To offer your help with this translation project, please contact [Chel Hee Lee](mailto:chelhee.lee@ucalgary.ca). 
 
-Note: The translation is outdated. The next update will be on May 01, 2021.
+## Manuals 
 
-An Introduction to R [English](https://cran.r-project.org/doc/manuals/r-devel/R-intro.html) | [(Korean)](./R-intro-ko.html)
+* **An Introduction to R** [English](https://cran.r-project.org/doc/manuals/r-devel/R-intro.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-intro-ko.html) | [Korean by ChatGPT](#)
 
-R Installation and Administration  [English](https://cran.r-project.org/doc/manuals/r-devel/R-admin.html) | [(Korean)](./R-admin-ko.html)
+* **R Data Import/Export** [English](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) | [Korean by Human](./https://imstatsbee.github.io/rmanko/inst/doc/R-data-ko.html)  | [Korean by ChatGPT](#)
 
-R Data Import/Export [English](https://cran.r-project.org/doc/manuals/r-devel/R-data.html) | [(Korean)](./R-data-ko.html)
+* **R Installation and Administration**  [English](https://cran.r-project.org/doc/manuals/r-devel/R-admin.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-admin-ko.html) | [Korean by ChatGPT](#)
 
-R FAQ [English](https://cran.r-project.org/doc/FAQ/R-FAQ.html) | [Korean](./R-FAQ-ko.html)
+* **Writing R Extensions** [English](https://cran.r-project.org/doc/manuals/r-release/R-exts.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-exts-ko.html) | [Korean by ChatGPT](#)
 
-R Windows FAQ [English](https://cran.r-project.org/bin/windows/base/rw-FAQ.html) | [(Korean)](./rw-FAQ-ko.html)
+* **R Language Definition** [English](https://cran.r-project.org/doc/manuals/r-release/R-lang.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-lang-ko.html) | [Korean by ChatGPT](#)
+
+* **R Internals** [English](https://cran.r-project.org/doc/manuals/r-release/R-ints.html) | [Korean by Human](https://imstatsbee.github.io/rmanko/inst/doc/R-ints-ko.html) | [Korean by ChatGPT](#)
+
+* **R FAQ** [English](https://cran.r-project.org/doc/FAQ/R-FAQ.html) | [Korean by Human](./https://imstatsbee.github.io/rmanko/inst/doc/R-FAQ-ko.html) | [Korean by ChatGPT](#)
+
+* **R Windows FAQ** [English](https://cran.r-project.org/bin/windows/base/rw-FAQ.html) | [Korean by Human](./https://imstatsbee.github.io/rmanko/inst/doc/rw-FAQ.html) | [Korean by ChatGPT](#)
 
