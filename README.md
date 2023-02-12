@@ -1,6 +1,12 @@
 # rmanko
 
-To offer your help with this translation project, please contact [Chel Hee Lee](mailto:chelhee.lee@ucalgary.ca). 
+R version 2.1.0 and later support translations of program messages into different languages. This project makes an effort to R-manual translation in Korean. However, the translation may not be up-to-date since R is under development. The objectives of this project are:   
+1.	Improve the amount of translation done by humans 
+2.	Apply chatGTP for translation 
+3.	Compare the quality of translation done by humans and chatGTP.
+Comments to the [maintainer](mailto:chelhee.lee@ucalgary.ca) via email are most appreciated. 
+
+Last update on 2023-FEB-12. 
 
 ## Manuals 
 
