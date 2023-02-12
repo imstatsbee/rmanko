@@ -26,6 +26,7 @@
 
 @include R-defs.texi
 @include version.texi
+@include R-intro-notification.texi
 
 @copying
 이 매뉴얼은 R @value{VERSION}을 위하여 작성되었습니다.
@@ -38,7 +39,11 @@ Gentleman & R.@: Ihaka@* Copyright @copyright{} 1997, 1998 M.@: Maechler@*
 @quotation
 @permission{}
 @end quotation
-@end copying
+
+ @notification{} 
+ @end copying 
+
+ 
 
 
 @c <FIXME>
