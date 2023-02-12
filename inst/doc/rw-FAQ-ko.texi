@@ -1,0 +1,1884 @@
+\input texinfo
+@c ===========================================================================
+@c
+@c This file was generated with po4a. Translate the source file.
+@c
+@c ===========================================================================
+
+@c %**start of header
+@setfilename rw-FAQ.info
+@settitle R for Windows FAQ (Translated in Korean)
+@setchapternewpage on
+@set VERSION
+@set RVERSION
+@c %**end of header
+@documentlanguage en
+@documentencoding ISO-8859-1
+
+@finalout
+
+@macro newchap{}
+@ifinfo
+@sp 1
+@end ifinfo
+@ifhtml
+@html
+ <hr>
+@end html
+@end ifhtml
+@end macro
+
+@titlepage
+@title R for Windows FAQ (Translated in Korean)
+@subtitle Frequently Asked Questions on R for Windows (Translated in Korean)
+@subtitle Version @value{VERSION}
+@author B. D. Ripley and D. J. Murdoch, updates by T. Kalibera
+@end titlepage
+
+@ifinfo
+R for Windows FAQ @* Frequently Asked Questions on R for Windows @* Version
+for @value{VERSION} @* B. D. Ripley and D. J. Murdoch, updates by
+T. Kalibera @*
+
+@sp 2
+@end ifinfo
+
+@ifhtml
+@html
+ <h2>Version for <tt>@value{VERSION}</tt></h2> 
+<address>B. D. Ripley
+and D. J. Murdoch, updates by T. Kalibera</address> <hr>
+@end html
+@end ifhtml
+
+@paragraphindent 0
+
+@contents
+@include version.texi
+@include R-intro-notification.texi
+
+
+@notification{}
+
+
+
+@ifinfo
+@sp 1
+@end ifinfo
+
+
+@node Top, 소개, (dir), (dir)
+@top R for Windows FAQ (Translated in Korean)
+
+@menu
+* 소개::                   
+* 설치 및 사용::        
+* Languages and Internationalization::  
+* Packages::                 
+* Windows Features::         
+* Workspaces::               
+* The R Console::            
+* Building from Source::             
+@end menu
+
+
+@newchap{}
+@node 소개, 설치 및 사용, Top, Top
+@chapter 소개
+
+본 FAQ 문서는 윈도우즈 버전의 R 사용자들을 위한 것입니다. 기본이 되는 중요한 R FAQ 문서는 다음의 링크로부터 찾을 수
+있습니다.
+
+@display
+@uref{https://CRAN.R-project.org/doc/FAQ/R-FAQ.html}.
+@end display
+
+The information here applies only to recent versions of R for Windows.  It
+is biased towards users of 64-bit Windows and since R 4.2.0, only 64-bit
+builds of R are provided.
+
+
+@newchap{}
+@node 설치 및 사용, Languages and Internationalization, 소개, Top
+@chapter 설치 및 사용
+
+@menu
+* 어디로부터 최신버전을 찾을 수 있나요?::  
+* 윈도우즈에서 어떻게 R을 설치하나요?::  
+* 설치가 잘되었는지 어떻게 확인하나요?::  
+* 설치과정을 조정할 수 있나요?::  
+* 어떻게 실행하나요?::  
+* CD 또는 USB 드라이브로부터 R을 실행할 수 있나요?::  
+* 설치된 R을 어떻게 제거하나요?::  
+* 업그레이드 하는 가장 좋은 방법은 무엇인가요?::  
+* 각각 다른 디렉터리에 있는 다른 프로젝트의 작업공간을 어떻게 보관할수있나요?::  
+* R로부터 나온 결과물을 어떻게 프린트를 하나요?::  
+* R CMD BATCH를 사용할 수 있나요?::  
+* Can I use with ESS and Emacs?::  
+* 홈 (HOME)과 작업 (working) 디렉터리는 무엇인가요?::  
+* 환경변수를 어떻게 설정하나요?::  
+* 파일을 찾을 수 없습니다.::  
+* R은 레지스트리를 사용하나요?::  
+* R에서 자동화기능을 사용할 수 있나요?::  
+* 인터넷 다운로드 기능 실패.::  
+* 특정 문자를 입력하게 되면 Rgui가 종료됩니다.::  
+* 'DLL attempted to change FPU control word'란 무엇을 의미하나요?::  
+* 다른 이상한 고장 (crash).::  
+* R은 왜 CPU의 50% 이상을 사용하지 않나요?::  
+* Does R run under Windows 7?::  
+* 따옴표가 콘솔/터미널/페이저에서 제대로 출력되지 않습니다.::  
+* 사용중인 키보드에는 틸데(tilde) 기호가 없습니다.::  
+* 64-bit 윈도우즈에서 어떻게 R을 사용하나요?::  
+* 32-bit과 64-bit 의 R중에 어떤것을 사용해야 할까요?::  
+* 같은 머신위에 32와 64 비트 R을 함께 설치할 수 있나요?::  
+* Rcmd를 PATH에서 찾을 수 없습니다!::    
+@end menu
+
+
+@node 어디로부터 최신버전을 찾을 수 있나요?, 윈도우즈에서 어떻게 R을 설치하나요?, 설치 및 사용, 설치 및 사용
+@section 어디로부터 최신버전을 찾을 수 있나요?
+
+Go to any CRAN site (see @uref{https://CRAN.R-project.org/@/mirrors.html}
+for a list), navigate to the @file{bin/windows/base} directory and collect
+the file(s) you need.  The current release is distributed as an installer
+@samp{-win.exe} of about 80MB.
+
+There are also links on that page to the @samp{r-patched} and @samp{r-devel}
+snapshots.  These are frequently updated builds of development versions of
+R.  The @samp{r-patched} build includes bug fixes to the current release,
+and @samp{r-devel} contains these as well as changes that are planned to
+eventually make it into the next @samp{x.y.0} release. @samp{r-devel} is
+less stable and likely to contain bugs, be careful if you use it.
+
+@node 윈도우즈에서 어떻게 R을 설치하나요?, 설치가 잘되었는지 어떻게 확인하나요?, 어디로부터 최신버전을 찾을 수 있나요?, 설치 및 사용
+@section 윈도우즈에서 어떻게 R을 설치하나요?
+
+Current binary versions of R are known to run on Windows 7 or later. R 4.1
+is the last version that supported 32-bit versions: @xref{Can I use R on
+64-bit Windows?}.  Windows Vista is no longer supported.
+
+R 4.2.0 and later require the Universal C Runtime (UCRT), which is included
+in Windows 10 and Windows Server 2016 or newer. On earlier versions of
+Windows, UCRT has to be installed before installing R. UCRT is available for
+Windows since Windows Vista SP2 and Windows Server 2008 SP2. 
+
+@c 2000 went end-of-life 2010-07-13
+@c XP SP3 went end of life 2014-04-08
+@c Vista went end of life 2017-04-11 
+@c 7 went end of life 2020-01-14
+@c 8 went end of life 2016-01-12, but 8.1 is still supported
+@c Server 2008 R2 went end of life 2020-01-14
+
+We only test on versions of Windows currently supported by Microsoft,
+recently mainly Windows 10, Windows Server 2022 and Windows 11.  The most
+thorough testing is done via CRAN packages checks: for R 4.3 this has been
+on Windows Server 2022.
+
+For UTF-8 to be the native encoding, you need R at least 4.2 and at least
+Windows 10 (version 1903) on desktop systems, Windows Server 2022 on
+long-term support server systems or Windows Server 1903 from the semi-annual
+channel.
+
+Your file system must allow case-honouring long file names (as is likely
+except perhaps for some network-mounted systems).  An installation takes up
+to 175MB of disk space.
+
+We tried to make R to work with space in file names, but building of some
+packages from source may not work as this is little tested.  By default,
+most versions of Windows have short names (aka 8dot3names) enabled by
+default on the system drive, and hence @file{Program Files} folder has a
+short-name variant @samp{PROGRA~1}, which is then used by R.  When R is
+installed on a different drive, we recommend that you ensure that the short
+name is available or choose an installation directory name without space,
+such as @file{D:\R}.  You can check whether the short name is available from
+R by @code{shortPathName(R.home())} or by @command{dir /X} from the
+@samp{Command Prompt}.  If it is not, you may create it using
+@command{fsutil}, e.g.  @command{fsutil file setshortname "Program Files"
+PROGRA~1} and @command{fsutil file setshortname "Program Files (x86)"
+PROGRA~2}. This may also be needed by some other applications used from R
+packages.  We have come across Windows Server 2022 docker container images
+with short names disabled even on the system drive.
+
+Installing to a network share (a filepath starting with
+@code{\\machine\...}) is not supported: such paths will need to be mapped to
+a network drive.
+
+To install use @samp{-win.exe}.  Just double-click on the icon and follow
+the instructions.  If you have an account with Administrator privileges you
+will be able to install R in the @file{Program Files} area and to set all
+the optional registry entries; otherwise you will only be able to install R
+in your own file area.  Since R 4.2.0, the default location in that case is
+the User Program Files folder (typically @file{$@{LOCALAPPDATA@}\Programs},
+so e.g.  @file{C:\Users\username\AppData\Local\Programs}). Prior to R 4.2.0,
+the default location was the Windows "personal" directory (typically
+@file{C:\Users\username\Documents}). Once R is installed, one may open the
+installation directory in explorer using @code{shell.exec(R.home())}.
+
+You may need to confirm that you want to proceed with installing a program
+from an `unknown' or `unidentified' publisher.
+
+After installation you may choose a working directory for R. By default, it
+is the Windows "personal" directory (typically
+@file{C:\Users\username\Documents}). You will have a shortcut to
+@file{Rgui.exe} on your desktop and/or somewhere on the Start menu file
+tree, and perhaps also in the Quick Launch part of the taskbar (Vista and
+earlier).  Right-click each shortcut, select Properties... and change the
+`Start in' field to your working directory.  Also, you need to remove the
+argument @code{--cd-to-userdocs} in the Target field, which implements the
+default behavior.  (If your account was not the one used for installation,
+you may need to copy the shortcut before editing it.) 
+
+On some systems with R prior to 4.2 you will have two shortcuts, one for
+32-bit with a label starting @code{R i386} and one for 64-bit starting
+@code{R x64} (@pxref{Should I run 32-bit or 64-bit R?})
+
+You may also want to add command-line arguments at the end of the Target
+field (@emph{after} any final double quote, and separated by a space), for
+example @code{--sdi --no-environ}.  You can also set environment variables
+at the end of the Target field, for example @code{R_LIBS=p:/myRlib}, and if
+you want to ensure that menus and messages are in (American) English,
+@code{LANGUAGE=en}.
+
+@c It is also possible to install from an MSI file, which will be of
+@c interest only for system administrators.  For how to build the MSI file,
+@c see the `R Installation and Administration Manual'.
+
+
+@node 설치가 잘되었는지 어떻게 확인하나요?, 설치과정을 조정할 수 있나요?, 윈도우즈에서 어떻게 R을 설치하나요?, 설치 및 사용
+@section How do I check an installation is not corrupt?
+
+R 2.11.0에서 제거된 설치파일들과 관련되어 있습니다.
+
+@node 설치과정을 조정할 수 있나요?, 어떻게 실행하나요?, 설치가 잘되었는지 어떻게 확인하나요?, 설치 및 사용
+@section 설치과정을 조정할 수 있나요?
+
+사용자가 원하는 대로 설치하는 일반적인 방법은 installer 마법사로 부터 콤포넨트를 선택하는 것 입니다. 하지만 sysadmin들은
+스크립트를 이용하여 R 설치하는 것을 좋아하고, installer의 사용은 following command-line flags를 이용할
+수 있습니다.
+
+@table @samp
+@item /SILENT
+오직 설치 과정 윈도우와 에러 메세지만을 보여줍니다.
+@item /VERYSILENT
+오직 에러 메세지만 보여줍니다.
+@item /DIR="x:\dirname"
+기본 설치 디렉토리를 지정합니다.
+@item /GROUP="folder name"
+기본 Start-menu group name을 설정합니다
+@item /COMPONENTS="comma separated list of component names"
+set the initial list of components: Components are named @samp{main},
+@samp{i386} (up to R 4.1), @samp{x64} and @samp{translations}.
+@item /CURRENTUSER
+install for the current user only even if the current user has Administrator
+privileges
+@end table
+
+@noindent
+It is also possible to save the settings used to a file and later reload
+those settings using
+
+@table @samp
+@item /SAVEINF="filename"
+특정한 파일에 대한 설정을 저장합니다. 만약 파일이름에 공백이 있다면, quotes를 사용해 주시기 바랍니다.
+@item /LOADINF="filename"
+command line을 확인한 이후,installer에게 특정한 파일로부터 설정들을 불러오도록 지시합니다.
+@end table
+
+A successful installation has exit code 0: unsuccessful ones may give 1, 2,
+3, 4 or 5.  See the help for Inno Setup (@uref{https://jrsoftware.org/}) for
+details.
+
+@c We have some facilities for building a customized installer, in
+@c particular to add packages to the installer.  See the `R Installation
+@c and Administration' manual in the subsection `Building the installers'.
+
+@node 어떻게 실행하나요?, CD 또는 USB 드라이브로부터 R을 실행할 수 있나요?, 설치과정을 조정할 수 있나요?, 설치 및 사용
+@section 어떻게 실행하나요?
+
+사용자가 준비했었던 installation의 바로가기를 더블클릭하십시오. 
+
+ 만약 사용자가 다른 프로젝트를 셋업하기 원한다면, 새로운 바로가기를 만들거나, 혹은 이미 만들어진 것을 사용하시고, 'Start
+in'(field of the Properties) 를 변경하십시오.
+
+You may if you prefer run R from the command line of any shell you use, for
+example a `Command Prompt' or a port of a Unix shell such as @command{tcsh}
+or @command{bash}. (The command line can be anything you would put in the
+Target field of a shortcut, and the starting directory will be the current
+working directory of the shell.  Note that the R executables are not by
+default added to the @env{PATH}.)  People running from a terminal usually
+prefer to run @command{Rterm.exe} and not @command{Rgui.exe}.
+
+@node CD 또는 USB 드라이브로부터 R을 실행할 수 있나요?, 설치된 R을 어떻게 제거하나요?, 어떻게 실행하나요?, 설치 및 사용
+@section CD 또는 USB 드라이브로부터 R을 실행할 수 있나요?
+
+가능합니다. 기본적인 R installation 은 재배치 되어 질 수 있으며, 그로인해 사용자는 R installation 이미지를
+하드디스크 혹은 외부 저장 기기(USB 메모리 등)에 구울 수 있습니다
+
+R 을 실행시키는 것은 쓰기가 가능한 일시적인 directory와 home directory에 대한 엑세스를 필요로 하고,and in
+the last resort these are taken to be the current directory. 적절하게 환경설정된
+윈도우즈의 버전을 문제가 없어야만 하지만, 만약 아니라면, 쓰기가능한 폴더안에 바로가기 생성하는것 없이는 R을 실행하는 것을 아마 불가능
+할 것입니다.
+
+
+@node 설치된 R을 어떻게 제거하나요?, 업그레이드 하는 가장 좋은 방법은 무엇인가요?, CD 또는 USB 드라이브로부터 R을 실행할 수 있나요?, 설치 및 사용
+@section 설치된 R을 어떻게 제거하나요?
+
+Normally you can do this from the @samp{Programs and Features} group in the
+Control Panel.  If it does not appear there, run @file{unins000.exe} in the
+top-level installation directory.  On recent versions of Windows you may be
+asked to confirm that you wish to run a program from an `unknown' or
+`unidentified' publisher.
+
+Uninstalling R only removes files from the initial installation, not (for
+example) packages you have installed or updated in your personal library.
+
+만약 모든 다른것들이 실패한다면, 사용자는 R이 설치된 whole directory를 삭제하십시오
+
+
+@node 업그레이드 하는 가장 좋은 방법은 무엇인가요?, 설치된 R을 어떻게 제거하나요?, 설치 및 사용
+@section 업그레이드 하는 가장 좋은 방법은 무엇인가요?
+
+That's a matter of taste. For most people the best thing to do is to
+uninstall R (see the previous Q), install the new version, and then handle
+the library.
+
+For those with a personal library (folder @file{R\win-library\@var{x.y}} of
+your @file{$@{LOCALAPPDATA@}} directory in R since 4.2.0, or of your home
+directory with earlier versions of R), nothing has to be done when the major
+and minor version of R (@var{x.y}) stays the same, but it may still be an
+opportunity to run @code{update.packages(checkBuilt=TRUE, ask=FALSE)}.
+
+When the minor or even major version of R changes, one has to install all
+required packages again.  The new version of R will use a different location
+for the personal library and the old personal library will be left intact
+(it may be deleted manually when no longer needed).  Installed packages
+should not be copied from the old library to the new one, because they may
+be incompatible with the new version of R.
+
+@node 각각 다른 디렉터리에 있는 다른 프로젝트의 작업공간을 어떻게 보관할수있나요?, R로부터 나온 결과물을 어떻게 프린트를 하나요?, 설치 및 사용
+@section 각각 다른 디렉터리에 있는 다른 프로젝트의 작업공간을 어떻게 보관할수있나요?
+
+Create a separate shortcut for each project: see Q2.5.  All the paths to
+files used by R are relative to the starting directory, so setting the
+`Start in' field (and removing the @code{--cd-to-userdocs} argument)
+automatically helps separate projects.
+
+다른 방법으로는, 사용자가 사용하기 원하는 프로젝트에 대한 directory안의 '@file{.Rdata}' file 클릭함으로써 R을
+시작하거나, extension '@file{.RData} 파일을 R 바로가기 위에 드래그 앤 드랍함으로써 R을 시작하십시오
+
+
+@node R로부터 나온 결과물을 어떻게 프린트를 하나요?, R CMD BATCH를 사용할 수 있나요?, 각각 다른 디렉터리에 있는 다른 프로젝트의 작업공간을 어떻게 보관할수있나요?, 설치 및 사용
+@section R로부터 나온 결과물을 어떻게 프린트를 하나요?
+
+이것은 사용자가 어떤 것을 프린터하느냐에 의해서 달라집니다
+
+@itemize @bullet
+@item
+사용자는 메뉴의 그래픽 윈도우를 통하거나 @code{dev.print}(with suitable arguments) 를 사용함으로써
+프린트 할수있습니다(도움말 페이지를 보십시오: most likely @code{dev.print}(win.graph) will
+work). 
+
+@item
+사용자는 R 콘솔 혹은 @samp{File | Print}에 의한 pager로 부터 프린트 할수있습니다.(만약 하나만 있다면,이것은
+selection 을 프린트할 것입니다. 만약 아니라면, 전체 콘솔 혹은 pager contents 프린트 합니다).
+
+@item
+사용자는 pager 나 HTML 브라우저 로 부터 help 파일들을 프리트 할 수 있습니다.
+
+@item
+만약 사용자가 설치된 LaTeX와 PostScript 혹은 PDF 프린팅 시스템를 가지고 있다면, @code{help(fn_name,
+help_type="postscript") (or "PDF")}에 의해서 도움 파일은 프린트 할수 있습니다.
+@end itemize
+
+
+@node R CMD BATCH를 사용할 수 있나요?, Can I use  with ESS and Emacs?, R로부터 나온 결과물을 어떻게 프린트를 하나요?, 설치 및 사용
+@section Can I use @code{R CMD BATCH}?
+
+할수있습니다. 모든 세부사항을 보려면R @code{CMD BATCH --help} or @code{?BATCH} 를 사용하십시오. 
+
+사용자는 @command{Rterm.exe}를 사용하면 batch 파일을 설정 할 수있습니다. batch 파일 샘플은 포함할지도
+모릅니다.
+
+@example
+path_to_R\bin\x64\Rterm.exe --no-restore --no-save < %1 > %1.out 2>&1
+@end example
+
+@noindent
+The purpose of @code{2>&1} is to redirect warnings and errors to the same
+file as normal output.
+
+
+@node Can I use  with ESS and Emacs?, 홈 (HOME)과 작업 (working) 디렉터리는 무엇인가요?, R CMD BATCH를 사용할 수 있나요?, 설치 및 사용
+@section Can I use  with ESS and Emacs?
+
+가능합니다. ESS는 윈도우 운영체제에 대한 R LTS(long time supported R)을 가지고 있습니다.
+
+이것은 콘솔없이 @code{Rterm.exe}를 통해서 실행됩니다. ESS에 대한 도움말을 위해서 R mailing lists가 아닌
+@email{ESS-help@@stat.ethz.ch}로 이메일 하시기 바랍니다.
+
+
+@node 홈 (HOME)과 작업 (working) 디렉터리는 무엇인가요?, 환경변수를 어떻게 설정하나요?, Can I use  with ESS and Emacs?, 설치 및 사용
+@section 홈 (HOME)과 작업 (working) 디렉터리는 무엇인가요?
+
+documentation안의 명명 장소들은 이것들과 같은 용어(HOME, working directories)들을 사용합니다.
+
+The working directory is the directory from which @code{Rgui} or
+@command{Rterm} was launched, unless a shortcut was used when it is given by
+the `Start in' field of the shortcut's properties (or
+@code{--cd-to-userdocs} was passed as argument). You can find this from R
+code by the call @code{getwd()}.
+
+The home directory (sometimes referred to as user's home directory, but not
+R home directory) is set as follows: If environment variable @env{R_USER} is
+set, its value is used.  Otherwise if environment variable @env{HOME} is
+set, its value is used.  After those two user-controllable settings, R tries
+to find system-defined home directories.  It first tries to use the Windows
+"personal" directory (typically @file{C:\Users\username\Documents}).  If
+that fails (but that is not expected on current Windows), if both
+environment variables @env{HOMEDRIVE} and @env{HOMEPATH} are set (and they
+normally are), the value is @file{$@{HOMEDRIVE@}$@{HOMEPATH@}}.  If all of
+these fail, the current working directory is used.
+
+You can find the home directory from R code by @code{Sys.getenv("R_USER")}
+or @code{normalizePath("~")}, @samp{~} being Unix notation for the home
+directory. Note that some distributions of Unix utilities for Windows, such
+as Msys2 (and hence Rtools) or cygwin set the environment variable
+@env{HOME} to a user directory of their choice. When R is invoked from a
+shell of such an distribution, the home directory in R would hence typically
+not be the Windows "personal" directory. With Rtools40, Rtools42 and
+Rtools43, it is the user profile (e.g. @file{C:\Users\username}).
+
+The R home directory is the directory where R was installed. You can find
+this from R code by @code{R.home()} or @code{Sys.getenv("R_HOME")}. From
+outside R, you can find it by invoking @code{R RHOME}.
+
+@node 환경변수를 어떻게 설정하나요?, 파일을 찾을 수 없습니다., 홈 (HOME)과 작업 (working) 디렉터리는 무엇인가요?, 설치 및 사용
+@section 환경변수를 어떻게 설정하나요?
+
+@command{Rgui.exe}와 @command{Rterm.exe}에 대한 환경변수는 세가지 다른 방법들을 통해 설정될 수 있습니다
+@enumerate
+@item
+On the command line as name=value pairs.  For example in the shortcut to
+@command{Rgui} you could have
+
+@example
+"path_to_R\bin\x64\Rgui.exe" HOME=p:/ R_LIBS=p:/myRlib
+@end example
+
+@item
+In an environment file @file{.Renviron} in the working directory or in your
+home directory, for example containing the line
+
+@example
+R_LIBS=p:/myRlib
+@end example
+
+만약 사용자가 이것을 하기 위한 permission을 가지고 있다면, environment file
+'@file{etc/Renviron.site}를 생성할 수 있고, 그 파일 안의 환경변수들도 같은 방법으로 설정할 수 있다. 이 것은
+모든 유저에 대한 설정과 R installation를 위한 변수들에 대해 유용합니다. 그것들에 값들은
+'@file{.Renviron}'파일 혹은 command line에서 중단 될 수 있다.
+
+See @code{?Startup} for more details of environment files and specifically
+pay attention to caveats when using backslashes.
+
+@item
+For all applications via Windows.  How you set an environment variable is
+system-specific: under recent versions of Windows, go to `User Accounts' in
+the Control Panel, and select your account and then `Change my environment
+variables'. Or, type `Edit environment variables for your account'.
+@end enumerate
+
+환경 변수에 대한 우선 순위는 옵션(이것은 command line입니다)들이 나열되어 있는 순서입니다. comman line 다음에
+'@file{.Renviron}', 그 다음 inherited environment 등의 순서입니다.
+
+
+@node 파일을 찾을 수 없습니다., R은 레지스트리를 사용하나요?, 환경변수를 어떻게 설정하나요?, 설치 및 사용
+@section R can't find my file, but I know it is there!
+
+How did you specify it? Backslashes have to be doubled in R character
+strings, so for example one needs
+@samp{"d:\\\\library\\xgobi\\scripts\\xgobi.bat"}.  You can make life easier
+for yourself by using forward slashes as path separators: they do work under
+Windows.  You should include the file extension (e.g.@: @samp{"xgobi.bat"}
+rather than just @samp{"xgobi"}); sometimes this isn't shown in Windows
+Explorer, but it is necessary in R.
+
+이러한 문제점들을 피하기 위한 간단한 방법으로는 standard Windows file selection dialog 를 실행하기 위한
+function, @code{file.choose()}를 사용하십시오. 만약 사용자가 저곳에 있는 파일 하나를 선택하였다면, 그 이름은
+R이 요구하는 정확한 포맷이 될것입니다.
+
+Another possible source of grief is spaces in folder names.  We have tried
+to make R work on paths with spaces in, but many people writing packages for
+Unix do not bother.  So it is worth trying the alternative short name
+(something like @samp{PROGRA~1}; you can get it as the `MS-DOS name' from
+the Properties of the file on some versions of Windows, and from
+@command{dir /X} in a @samp{Command Prompt} window), and using the function
+@code{shortPathName} from R code. See also Q2.2.
+
+
+@node R은 레지스트리를 사용하나요?, R에서 자동화기능을 사용할 수 있나요?, 파일을 찾을 수 없습니다., 설치 및 사용
+@section R은 레지스트리를 사용하나요?
+
+R 자신혼자 실행되고 있을때는 Registry를 사용하진 않습니다.
+
+사용자가 R installer를 실행 시킬때, @samp{Select Additional Tasks} 아래 @samp{Save
+version number in registry}와 @samp{Associate R with .RData files} 있습니다.
+
+만약 사용자가 첫번째 옵션을 선택한다면, 이후의 string entries들을 Windows registry 에 더해집니다.
+@itemize @bullet
+@item @code{HKEY_LOCAL_MACHINE\Software\R-core\R\Current Version}
+    contains the version number, currently .
+@item @code{HKEY_LOCAL_MACHINE\Software\R-core\R\[version]\InstallPath}
+    (where @code{[version]} is currently ) contains the path to the R home
+directory.
+@end itemize
+If you do not have administrative privileges on the machine while running
+the installer, then the entries are created under @code{HKEY_CURRENT_USER}.
+The same entries are also created under @code{Software\R-core\R32} or
+@code{Software\R-core\R64}, for 32- and 64-bit R respectively (only 64-bit
+since R 4.2).
+
+만약 두번째 옵션을 (shown with administrative privileges only) (@samp{Associate R
+with .RData files})을 체크표시 했다면, entries들은 @code{HKEY_CLASSES_ROOT\.RData} 와
+@code{HKEY_CLASSES_ROOT\RWorkspace}에 생성됩니다.
+
+사용자는 installation 이후에 sub-folder(@code{bin} 폴더안의)에 있는 @code{RSetReg.exe}를
+실행함으로써 Registry entries들을 추가할수 있고, argument @code{/U}를 실행함으로 제거할 수 있습니다. 중요한
+것은 만약 argument @code{Personal}과 함께 실행하지 않거나, file associations을 제거혹은 설정하지만
+않는 다면, 이것은 관리자 권한을 요구한다는 것입니다.
+
+
+@node R에서 자동화기능을 사용할 수 있나요?, 인터넷 다운로드 기능 실패., R은 레지스트리를 사용하나요?, 설치 및 사용
+@section Does R support automation (OLE, COM)?
+
+@c @uref{https://www.omegahat.net/} 
+Directly, no.  See packages such as @code{RDCOMClient} from Omegahat
+(@uref{https://github.com/omegahat/RDCOMClient}, source and binary packages
+for earlier versions of R available from
+@uref{https://www.stats.ox.ac.uk/pub/RWin/})  and the non-Free project at
+@uref{https://www.autstat.com/}.
+
+@node 인터넷 다운로드 기능 실패., 특정 문자를 입력하게 되면 Rgui가 종료됩니다., R에서 자동화기능을 사용할 수 있나요?, 설치 및 사용
+@section 인터넷 다운로드 기능 실패.
+
+예를 들면, @code{update.packages()}와 packages menu위의 menu items 등이 있습니다.
+
+We have had several reports of this, although they do work for us on
+@emph{all} of our machines.  There are two known possible causes.
+
+(a) A proxy needs to be set up: see @code{?download.file}. Note that this is
+specific to the download method and the default method changed in \R 4.2.0.
+
+(b) Firewall settings are blocking the R executables from contacting the
+Internet (but this should result in informative error messages from the
+firewall program).
+
+(c) A MITM proxy (typically in enterprise environments) makes it impossible
+to validate that certificates haven't been revoked.  One can switch to only
+best effort revocation checks via an environment variable: see
+@code{?download.file}.
+
+
+@node 특정 문자를 입력하게 되면 Rgui가 종료됩니다., 'DLL attempted to change FPU control word'란 무엇을 의미하나요?, 인터넷 다운로드 기능 실패., 설치 및 사용
+@section 특정 문자를 입력하게 되면 Rgui가 종료됩니다.
+
+This has not been reported for many years, but used to happen regularly.
+All the occurrences we have solved have been traced to faulty versions of
+@samp{msvcrt.dll}: we have installed a workaround that seems to avoid this.
+A few other people have discovered this was caused by desktop switcher and
+keyboard macro programs, for example `Macro Magic' and `JS Pager'.
+
+R 4.2 and later use UCRT as the C runtime instead of MSVCRT. No such
+problems have been reported so far.
+
+@node 'DLL attempted to change FPU control word'란 무엇을 의미하나요?, 다른 이상한 고장 (crash)., 특정 문자를 입력하게 되면 Rgui가 종료됩니다., 설치 및 사용
+@section 'DLL attempted to change FPU control word'란 무엇을 의미하나요?
+
+This is a @emph{warning} which indicates that R has taken action to correct
+the action of some (non-R) DLL which has just been loaded and has changed
+the floating point control word (in its initialization code)  to a setting
+incompatible with that needed for R.  This is not good practice on the part
+of the DLL, and often indicates that it needs to be updated.
+
+Unfortunately, because DLLs may themselves load other DLLs it is not
+possible for R to track which DLL caused the problem.
+
+This is less of a problem with 64-bit builds of R, which use SSE
+instructions for computations instead of the FPU. We may be able to remove
+this handling of the FPU control word in future versions of R.
+
+See also @code{?dyn.load}.
+
+@node 다른 이상한 고장 (crash)., R은 왜 CPU의 50% 이상을 사용하지 않나요?, 'DLL attempted to change FPU control word'란 무엇을 의미하나요?, 설치 및 사용
+@section 다른 이상한 고장 (crash).
+
+Some users have found that @code{Rgui.exe} fails to start, exiting with a
+``Floating-point invalid operation'' or other low level error.  This error
+may also happen in the middle of a session. This hasn't been reported for
+several years. In some cases where we have tracked this down, it was due to
+bugs in the video driver on the system in question: it makes changes to the
+floating point control word which are incompatible with R.  (Good practice
+would restore the control word to the state it was in when the driver code
+was called, and R tries hard to correct this before running its own code.)
+For example, one user reported that the virtual screen manager JSP2 caused
+this crash. These errors are essentially impossible for us to fix or work
+around beyond the measures already taken.  The only solution we know of is
+for the user to replace the buggy system component that is causing the
+error.
+
+@node R은 왜 CPU의 50% 이상을 사용하지 않나요?, Does R run under Windows 7?, 다른 이상한 고장 (crash)., 설치 및 사용
+@section R은 왜 CPU의 50% 이상을 사용하지 않나요?
+
+This is a misreading of Windows' confusing Task Manager.  R's computation is
+single-threaded, and so it cannot use more than one CPU.  What the task
+manager shows is not the usage in CPUs but the usage as a percentage of the
+apparent total number of CPUs.  We say `apparent' as it treats so-called
+`hyper-threaded' CPUs such as two CPUs per core, and most modern CPUs have
+at least two cores.
+
+You can see how many `CPU's are assumed by looking at the number of graphs
+of `CPU Usage History' on the `Performance' tab of the Windows Task manager.
+
+R itself would only use multiple CPUs during parallel installation of
+packages, which needs to be selected by user. Some contributed R packages
+use multiple CPUs or multiple threads.
+
+
+@node Does R run under Windows 7?, 따옴표가 콘솔/터미널/페이저에서 제대로 출력되지 않습니다., R은 왜 CPU의 50% 이상을 사용하지 않나요?, 설치 및 사용
+@section Does R run under Windows 7/8/10/11/Server 2012/2016/2022?
+
+R 4.3 code base still conservatively uses features of Windows 7 and later
+only when available, and otherwise falls back to older features, so it might
+still run on 7, but this is not tested (see Q2.2), and the code is tuned for
+newer systems.  Some performance work-arounds for old Windows systems past
+their end of support may be removed, such as a custom memory allocator
+removed in R 4.2.
+
+Since 4.2, R uses UTF-8 as the native encoding on recent Windows (see Q2.2).
+
+Earlier versions of Windows had user and Administrator accounts, and user
+accounts could be given administrative privileges (by being added to the
+local Administrators group) and so write permission over system areas such
+as @file{c:\Program Files}.  R would be installed either by users in their
+own file space or by an account with administrator privileges into a system
+area.  Sysadmins could set policies for user accounts, and you might for
+example have needed to be a `Power User' to install software at all.
+
+Vista and later normally disable the Administrator account and expect
+software installation to be done by an account which is in the local
+Administrator group with `admin approval mode' turned on.  (The
+Administrator account by default has it turned off.)  Unlike (say)  Windows
+XP, such accounts do not run programs with full administrator privileges,
+and this is where the issues arise.  These OSes have the concept of
+`over-the-shoulder' credentials: if you are running without full
+administrator privileges and do something which needs them you may be
+prompted with one or more security-check dialog boxes, and may be required
+to provide administrator credentials or confirm that you really want to take
+that action.
+
+Vista and later will report that the R installer has an `unidentified
+publisher' or `unknown publisher' and ask if it should be run.  System
+administrators can disable installing applications from non-trusted sources,
+in which case you will have to persuade them that R is trustworthy, or
+digitally sign the R installer yourself, or (unless this is also disabled)
+run the installer from a standard account and install into your own file
+area.
+
+@c(The same issues apply to the @file{.msi}
+@c version of the installer.)
+
+If you install R as a standard user into your own file space and use it
+under the same account, there are no known permission issues.
+
+If you use the default Administrator account (without `admin approval mode'
+being turned on) and install/update packages (in the system area or
+elsewhere), no issues are known.
+
+If you use an account in the local Administrators group in `admin approval
+mode' (which is the intended norm under these OSes), installation will make
+use of `over-the-shoulder' credentials.  You will run into problems if you
+try installing (including updating) packages in the main R library.  (It
+would be nice if at that point R could use over-the-shoulder credentials,
+but they apply to processes as a whole.  Vista and later disallow creating
+@code{.dll} files in the system area without credentials.)  There are
+several ways around.
+
+@itemize
+@item
+Run R with Administrator privileges in sessions where you want to install
+packages.  (Do so by right-clicking on the R shortcut and selecting 'Run as
+Administrator'.)
+
+@item
+Transfer ownership of the R installation to the user which installed R.  To
+do so, use the security tab on the @samp{Properties} of the top-level R
+folder and give `Full Control' over this directory to the user (not just the
+Administrator group).
+
+@item
+Install packages into a different library tree owned by the account used to
+install R.
+
+For an installation to be used by a single user, the simplest way is to make
+use of a `personal library': @xref{I don't have permission to write to the
+\library directory}.
+
+For a site installation, you can create a site-wide library directory
+anywhere convenient, and add it to the default package search path for all
+users via @env{R_LIBS_SITE} in @file{etc\Renviron.site}.  @xref{What are
+HOME and working directories?}.  There is a standard location for a site
+library, the @file{site-library} directory in the top-level R folder (which
+you would need to create with full control for the R installation account).
+This will be used for installation in preference to the main library folder
+if it exists.
+
+This approach will not allow you to update the recommended packages unless
+you `Run as administrator': we suggest you use an R session running under
+Administrator privileges when updating those.
+@end itemize
+
+If you use an account in the local Administrators group in `admin approval
+mode', you can still install R for the current user only in your own file
+space without using nor being asked for the `over-the-shoulder'
+credentials.  See Q2.4.
+
+Another issue with Vista was that the standard POSIX ways that R uses
+(e.g.@: in @code{file.info} and @code{file.access}) to look at file
+permissions no longer worked reliably.  @code{file.access} was re-written to
+work with Windows NT-based security and the new version seems much more
+reliable with these OSes (but still not 100% correct).
+
+@c On suitably recent hardware Vista and later can prevent the execution of
+@c code from data areas via `Data Execution Prevention' (from a tab in
+@c System Properties -> Advanced -> Performance), and sysadmins can turn
+@c this on for all programs.  R runs correctly with DEP enabled.
+
+
+@node 따옴표가 콘솔/터미널/페이저에서 제대로 출력되지 않습니다., 사용중인 키보드에는 틸데(tilde) 기호가 없습니다., Does R run under Windows 7?, 설치 및 사용
+@section Quotes don't come out right on the console/terminal/pager.
+
+R 4.2 and later use UTF-8 as the native encoding on recent Windows (see
+Q2.2) and this should make also this previously reported problem disappear.
+With this feature, R automatically uses the 65001 code page (UTF-8).  When
+using @code{RTerm} from the @code{Windows Command Prompt} (@file{cmd.exe})
+or @code{Power Shell}, one may have to select a suitable font that has
+glyphs for the characters intended, such as @samp{NSimFun} for Asian
+language).
+
+R may make use of directional quotes that were not always rendered correctly
+by Windows: these are used by default only by @code{Rgui} in suitable
+locales (not Chinese/Japanese/Korean).
+
+Whether these are used in R output (from functions @code{sQuote} and
+@code{dQuote}) is controlled by @code{getOption("useFancyQuotes")} whose
+default is @code{FALSE} except for the @code{Rgui} console.  There are two
+potential problems with rendering directional quotes.  The first is with
+running @code{Rterm}: in European locales the `Windows Command Prompt' is by
+default set up to use MS-DOS and not Windows default encodings: this can be
+changed via @command{chcp}, with @command{chcp 1252} being appropriate for
+Western European (including English)  locales.  The other is that the
+default raster fonts only include directional single quotes and not
+directional double quotes (which will probably be rendered as a filled
+rectangle). In R 4.2 and later on recent versions of Windows where UTF-8 is
+the native encoding, @command{Rterm} will automatically switch the console
+codepage to UTF-8.
+
+Directional quotes will also be used in text help which is normally
+displayed in R's internal pager: these may not be rendered correctly in an
+external pager.  They are also used in HTML help, where most browsers use
+fonts which render them correctly.
+
+The font used can affect whether quotes are rendered correctly.  The default
+font in the @code{Rgui} console and internal pager is @code{Courier New},
+which has directional quotes on all the systems we tried.  @code{Lucida
+Console} which has elegant glyphs for directional quotes (but seems rather
+light unless ClearType is in use): @code{Consolas} is another font which we
+often select when ClearType is in use.  Non-TrueType fonts such as
+@code{Courier} and @code{FixedSys} lack directional double quotes on the
+systems we tried.
+
+There is a related problem with using @code{Sweave} output in @code{Rgui},
+for LaTeX needs to be told about the encoding of directional quotes by
+including in the LaTeX preamble e.g.@: (for a Western European locale)
+
+@example
+\usepackage[cp1252]@{inputenc@}
+@end example
+
+@noindent
+or their use suppressed by @code{options(useFancyQuotes=FALSE)}.
+
+@node 사용중인 키보드에는 틸데(tilde) 기호가 없습니다., 64-bit 윈도우즈에서 어떻게 R을 사용하나요?, 따옴표가 콘솔/터미널/페이저에서 제대로 출력되지 않습니다., 설치 및 사용
+@section There is no tilde on my keyboard!
+
+Where tilde does not appear on the main keyboard, it can normally be
+accessed by pressing AltGr (the right Alt key) plus some other key.  This is
+@code{]} in Canadian (multilingual), German and Scandinavian layouts,
+@code{1} in Eastern Europe, @code{[} in Portuguese, @code{4} or @code{5} in
+Spanish, @code{/} in Francophone Belgian, and so on.  You can explore those
+for your keyboard via the `On-Screen Keyboard' (under Ease of access on
+Windows 7).
+
+On all Windows versions you should be able to get tilde by holding the down
+the left Alt key and typing 0126 on the numeric keypad (if you have one),
+then releasing the Alt key.
+
+@node 64-bit 윈도우즈에서 어떻게 R을 사용하나요?, 32-bit과 64-bit 의 R중에 어떤것을 사용해야 할까요?, 사용중인 키보드에는 틸데(tilde) 기호가 없습니다., 설치 및 사용
+@section 64-bit 윈도우즈에서 어떻게 R을 사용하나요?
+
+Yes, and this is the primarily used and the only tested option now.  Since R
+4.2.0, 32-bit builds are no longer provided.
+
+The 32-bit build of R for Windows (R 4.1 and earlier) will run on both
+32-bit and 64-bit@footnote{what Windows calls x64 for x86-64 CPUs, not the
+very rare ia64 Windows for Itanium CPUs.} versions of Windows.  64-bit
+versions of Windows run 32-bit executables under the WOW (Windows on
+Windows) subsystem: they run in almost exactly the same way as on a 32-bit
+version of Windows, except that the address limit for the R process is 4GB
+(rather than 2GB or perhaps 3GB).
+
+When R 4.1 and earlier is installed on 64-bit Windows there is the option of
+installing 32- and/or 64-bit builds: the default is to install both. If you
+are using the 32-bit build, replace @samp{x64} by @samp{i386} in the
+examples in this FAQ.
+
+@node 32-bit과 64-bit 의 R중에 어떤것을 사용해야 할까요?, 같은 머신위에 32와 64 비트 R을 함께 설치할 수 있나요?, 64-bit 윈도우즈에서 어떻게 R을 사용하나요?, 설치 및 사용
+@section 32-bit과 64-bit 의 R중에 어떤것을 사용해야 할까요?
+
+Obviously, only relevant if you are using 64-bit Windows.  Since R 4.2.0,
+32-bit builds are no longer provided.
+
+For most users we would recommend using the `native' build, that is the
+32-bit version on 32-bit Windows and the 64-bit version of 64-bit Windows.
+
+The advantage of a native 64-bit application is that it gets a 64-bit
+address space and hence can address far more than 4GB (how much depends on
+the version of Windows, but in principle 8TB).  This allows a single process
+to take advantage of more than 4GB of RAM (if available) and for R's memory
+manager to more easily handle large objects (in particular those of 1GB or
+more).  The disadvantages are that all the pointers are 8 rather than 4
+bytes and so small objects are larger and more data has to be moved around,
+and that less external software is available for 64-bit versions of the
+OS. The 64-bit compilers are able to take advantage of extra features of all
+x86-64 chips (more registers, SSE2/3 instructions, @dots{}) and so the code
+may run faster despite using larger pointers.  The 64-bit build is nowadays
+usually slightly faster than the 32-bit build on a recent CPU (Intel Core 2
+or later or AMD equivalent).
+
+For advanced users the choice may be dictated by whether the contributed
+packages needed are available in 64-bit builds (although CRAN only offers
+32/64-bit builds).  The considerations can be more complex: for example
+32/64-bit @code{RODBC} need 32/64-bit ODBC drivers respectively, and where
+both exist they may not be able to be installed together.  An extreme
+example is the Microsoft Access/Excel ODBC drivers: if you have installed
+64-bit Microsoft Office you can only install the 64-bit drivers and so need
+to use 64-bit @code{RODBC} and hence R.  (And similarly for 32-bit Microsoft
+Office.)
+
+@node 같은 머신위에 32와 64 비트 R을 함께 설치할 수 있나요?, Rcmd를 PATH에서 찾을 수 없습니다!, 32-bit과 64-bit 의 R중에 어떤것을 사용해야 할까요?, 설치 및 사용
+@section 같은 머신위에 32와 64 비트 R을 함께 설치할 수 있나요?
+
+Obviously, only relevant if the machine is running a 64-bit version of
+Windows -- simply select both when using the installer.  You can also go
+back and add 64-bit components to a 32-bit install, or @emph{vice versa}.
+Since R 4.2.0, 32-bit builds are no longer provided.
+
+For many Registry items, 32- and 64-bit programs have different views of the
+Registry, but clashes can occur.  The most obvious problem is the file
+association for @file{.RData} files, which will use the last installation
+for which this option is selected, and if that was for an installation of
+both, will use 64-bit R.  To change the association the safest way is to
+edit the Registry entry
+@samp{HKEY_CLASSES_ROOT\RWorkspace\shell\open\command} and replace
+@samp{x64} by @samp{i386} or @emph{vice versa}.
+
+
+@node Rcmd를 PATH에서 찾을 수 없습니다!, , 같은 머신위에 32와 64 비트 R을 함께 설치할 수 있나요?, 설치 및 사용
+@section Rcmd를 PATH에서 찾을 수 없습니다!
+
+This has often been reported after an upgrade.
+
+The R installer does not put @command{Rcmd.exe} (nor any other R executable)
+on your @env{PATH}.  What seems to have happened is that people did this for
+themselves in the past, upgraded R (which by default will install to a
+different location) and un-installed the old version of R.  If you do that
+(or install R for the first time), you need to edit the @env{PATH}.
+
+The element you want to add to the path is something like
+
+@example
+c:\Program Files\R\R-4.3.0\bin\x64
+@end example
+
+@noindent
+for 64-bit @command{Rcmd.exe}, replacing @code{x64} by @code{i386} for
+32-bit.
+
+How you set the path depends on your OS version.  Under recent versions, go
+to `User Accounts' in the Control Panel, and select your account and then
+`Change my environment variables'.  (System policies can prevent end users
+making changes.)
+
+@c https://stat.ethz.ch/pipermail/r-help/2011-October/293413.html
+An alternative is to set the @env{PATH} in the shell you are running
+(@command{Rcmd.exe} is a command-line program).  For those using the
+standard Windows `Command Prompt' Duncan Murdoch suggested:
+
+The simple way to do it just for the command prompt is to write a little
+batch file @command{setpath.bat} containing
+
+@example
+set PATH=newstuff;%PATH%
+@end example
+
+@noindent
+and then run @command{cmd} with
+
+@example
+CMD /K setpath.bat
+@end example
+
+
+@newchap{}
+@node Languages and Internationalization, Packages, 설치 및 사용, Top
+@chapter Languages and Internationalization
+
+@menu
+* 설치프로그램이 내 언어를 지원하지 않습니다.::  
+* R을 영어로 설치하기 원합니다!::  
+* R을 중국어/일본어/한국어로 실행하기 원합니다.::  
+* 설치는 영어를 선택하였으나 R이 중국어로 실행됩니다.::  
+* 일본어 폰트를 사용 가능하게 하고 싶습니다.::  
+* R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다.::  
+* 대화버튼이 번역되어 있지 않습니다.::    
+@end menu
+
+@node 설치프로그램이 내 언어를 지원하지 않습니다., R을 영어로 설치하기 원합니다!, Languages and Internationalization, Languages and Internationalization
+@section 설치프로그램이 내 언어를 지원하지 않습니다.
+
+제한된 언어들만 지원되고 있습니다. 현재는 카탈로니아어, 중국어(간체와 번체), 체코어, 덴마크어, 네덜란드어, 핀란드어, 불어,
+독일어, 그리스어, 히브리어, 헝가리어, 이탈리아어, 일본어, 한국어, 노르웨이어, 폴란드어, 포르투갈어(브라질),
+포르투갈어(포르투갈), 러시아어, 슬로베니아어, 스페인어(스페인)와 우크라이나어 입니다.
+
+@node R을 영어로 설치하기 원합니다!, R을 중국어/일본어/한국어로 실행하기 원합니다., 설치프로그램이 내 언어를 지원하지 않습니다., Languages and Internationalization
+@section R을 영어로 원합니다(불어/중국어/…가 아닌)!
+
+R은 디폴트(default)로 윈도우와 동일한 언어로 운영되도록 설정 되어있습니다.
+
+분명히 어떤 사용자들은 윈도우가 특정한 언어에 묶여있어 선택권이 없는 경우  또는 윈도우는 모국어로 사용하기 원하지만 R은 그렇지 않을
+수 있습니다. 그렇다면 Q2.2와 Q2.15에서 논의된 것처럼 @code{LANGUAGE=en}으로 설정하시거나,
+@file{Rconsole} file에 설정하시면 됩니다.
+
+@node R을 중국어/일본어/한국어로 실행하기 원합니다., 설치는 영어를 선택하였으나 R이 중국어로 실행됩니다., R을 영어로 설치하기 원합니다!, Languages and Internationalization
+@section R을 중국어/일본어/한국어로 실행하기 원합니다.
+
+적합한 윈도우 버전은 동아시아(East Asian) 언어를 지원합니다만 예를 들어, 외국어로 설치된 윈도우(e.g.@: Western
+installations of Windows)는 종종 지원하지 않습니다. 그래서 당신이 사용하고 있는 윈도우가 그런지 생각해볼 필요가
+있습니다.
+
+R 4.2 and later on recent versions of Windows (see Q2.2) use UTF-8 as the
+native encoding.  It is thus possible to use characters outside of the
+system locale code page in R, including the command-line front-end
+@command{Rterm.exe} (and @command{Rgui.exe}, where limited support has
+existed before). For use in @command{RTerm}, one needs to choose suitable
+fonts which have the required glyphs, such as @code{NSimFun} for Asian
+languages.  Use @code{l10n_info()} from R to check whether R is really
+running in UTF-8 as native encoding.
+
+With R 4.2 and later on earlier versions of Windows and with earlier
+versions of R, the following content still applies.
+
+@command{Rterm.exe}와 @command{Rgui.exe}는 싱글 너비(single-width)와 더블
+너비(double-width)문자를 지원합니다. @file{Rconsole} and @file{Rdevga}에서 적합한 폰트를 선택할
+필요가 있습니다.(@code{?Rconsole} 또는 파일 내 주석을 참조하세요: 시스템 버전은 @file{etc} 폴더 안에
+있습니다.); 나중에 @code{Arial}을 @code{Arial Unicode MS}로 바꿀 수 있으며,
+@code{FixedSys}와 @code{MS Mincho} 폰트를 @file{Rconsole}에 설정 하도록 시도하였습니다.
+(Note that (@file{Rdevga}는 윈도우 그래픽 파일(Windows graphics devices)에만 적용될 수 있음을
+기억하시기 바랍니다. @code{pdf}와 같은 파일에는 적용되지 않습니다.)  
+
+명심하실 것은 콘솔 폰트는 모든 CJK 문자(사용된 너비 테이블로 추정)에 대해 더블 너비 문자(double-width
+characters)만을 사용한다는 점입니다: 이것은 CJK를 사용하는 곳을 위해 개발된 폰트들에 대해서는 사실이지만,
+@code{Lucida Console} 이나 @code{Consolas}의 예에는 해당되지 않습니다.
+
+You do need to ensure that R is running in a suitable locale: use
+@code{Sys.getlocale()} to find out.  (CJK users may be used to their
+language characters always being available, which is the case for so-called
+`Unicode' Windows applications.  However, R is primarily written for
+Unix-alikes and is not therefore `Unicode' in the Windows sense.)  You can
+find suitable locale names from
+@uref{https://msdn.microsoft.com/@/en-us/@/library/@/39cwe7zf%28v=vs.80%29.aspx}
+and
+@uref{https://msdn.microsoft.com/@/en-us/@/library/cdax410z%28v=vs.80%29.aspx}
+beware that @code{"Chinese"} is Traditional Chinese (code page 950, Big5)
+and @code{"chs"} is needed for Simplified Chinese (code page 936, GB2312).
+
+When using @command{Rterm} the window in which it is run has to be set up to
+use a suitable font (e.g. @code{Lucida Console} or @code{Consolas}, not the
+OEM raster fonts) and a suitable codepage (which for the Windows Cmd shell
+can be done using @command{chcp}). In R 4.2 and later on recent versions of
+Windows where UTF-8 is the native encoding, @command{Rterm} will
+automatically switch the console codepage to UTF-8.
+
+@node 설치는 영어를 선택하였으나 R이 중국어로 실행됩니다., 일본어 폰트를 사용 가능하게 하고 싶습니다., R을 중국어/일본어/한국어로 실행하기 원합니다., Languages and Internationalization
+@section 설치는 영어를 선택하였으나 R이 중국어로 실행됩니다.
+
+정확하게 말하자면 설치를 위한(@strong{for installation}) 영어를 선택한 것입니다! 설치 프로그램의 언어는R을
+실행하는 데 사용하는 언어와는 아무 상관이 없습니다: 이것은 전적으로 윈도우 실행의 표준입니다(그리고 여러 사용자들의 컴퓨터는 필요에
+따라서 다른 언어를 사용할 수 있습니다).
+
+메뉴와 메시지에 대해 R언어는 사용 장소(@emph{locale})에 의해 결정된 것을 사용합니다: 자세한 내용은 적절한 매뉴얼을
+읽어보시기 바랍니다 (`R Installation and Administration'). R이 영어 메시지를 사용하기 위해서는 R을
+시작하기 위해 사용하는 단축아이콘(shortcut)에 @code{LANGUAGE=en}를 덧붙이거나, 또는 @file{Rconsole}
+파일에 정의하여야 함을 기억하시기 바랍니다.
+
+@node 일본어 폰트를 사용 가능하게 하고 싶습니다., R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다., 설치는 영어를 선택하였으나 R이 중국어로 실행됩니다., Languages and Internationalization
+@section 일본어 폰트를 사용 가능하게 하고 싶습니다.
+
+콘솔에서와 그래프에 주석 다는 것을 예를 들어 보겠습니다. Western-European이 아닌 어떤 언어에도 유사한 설명이 적용됩니다.
+
+적절한 폰트라면 제대로 작동할 것입니다. MS Mincho나 MS Gothic을 console 폰트로써 확실하게 싱글과 더블
+너비(single- and double-width) 문자로 올바르게 취급될 수 있도록 지정할 필요가
+있습니다. @code{windows()} graphics device을 위한 디폴트 그래픽 폰트는 대부분의 일반적인 일본어 문자를 다룰
+수 있습니다만, 좀 더 특별한 폰트들은 정의되어야 할 수도 있습니다. (어떻게 폰트를 지정해야 하는가에 대해서는 Q5.2를 참고하시기
+바랍니다: 콘솔 폰트는 `GUI preferences' 메뉴 항목에서도 정의할 수 있습니다.)@code{windowsFonts}에 대한
+도움말은 @code{windows()} family of devices에 대한 일본어 폰트 선택하기의 예를 포함합니다.
+
+추가로, Hershey 벡터 폰트(@code{?Hershey}, @code{?Japanese}와 @code{demo(Japanese)}를
+참조)는일본 문자를 표시(display)할 수 있는 graphics device라면 사용될 수 있습니다.
+
+@code{postscript} graphics device에서 non-Latin-1 문자를 사용하기 위해서는, 도움말 페이지를
+참고하세요(@code{pdf}로도 가능합니다).
+
+@node R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다., 대화버튼이 번역되어 있지 않습니다., 일본어 폰트를 사용 가능하게 하고 싶습니다., Languages and Internationalization
+@section R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다.
+
+@file{Rconsole}에 사용 중인 encoding을 지원하는 폰트를 정의해야 합니다(Q5.2 참조). 윈도우 이전 버전에서는
+문제가 되곤 했었지만, 지금은 그런 폰트를 찾아보기가 어렵습니다.
+
+Support for these characters within @command{Rterm} depends on the
+environment (the terminal window and shell, including locale and codepage
+settings) within which it is run as well as the font used by the terminal
+window.  Those are usually on legacy DOS settings and need to altered (see
+Q3.3).
+
+@node 대화버튼이 번역되어 있지 않습니다., , R 콘솔에서 악센트 부호 문자를 찾을 수 없습니다., Languages and Internationalization
+@section 대화버튼이 번역되어 있지 않습니다.
+
+대부분의 경우에는 그렇습니다만 윈도우에 의한 경우는 아닙니다. 사용장소 또는 @code{LANGUAGE} 환경 변수 설정은 `UI
+language'의 윈도우 설정을 바꾸지 않습니다.Vista와 나중에 다룰 'UI language' 그리고 시스템 장소(system
+locale)는 `non-Unicode' 프로그램(윈도우 7에서 관리자 탭에 있는)에 사용되는 언어 설정을 위한 것입니다.
+
+@c For further details see
+@c @uref{http://msdn.microsoft.com/@/library/@/default.asp?url=/@/library/@/en-us/@/intl/@/nls_0ddl.asp}.
+만약 완벽하게 불어나 중국어로 운영되는 윈도우를 사용한다면, 이러한 언어 설정이 일관적으로 이루어 질 것입니다. 하지만, 만약 한 언어로
+윈도우를 실행하고 다른 언어로 R을 실행하여 한다면, 윈도우가 internationalization을 조금은 이상하게 다루는 것을 발견할
+수도 있습니다.
+
+@newchap{}
+@node Packages, Windows Features, Languages and Internationalization, Top
+@chapter Packages
+
+
+@menu
+* 이 버전의 라이브러리에 패키지를 설치할 수 있나요?::  
+* I don't have permission to write to the \library directory::  
+* 설치한 패키지가 HTML 도움말 시스템에 보이지 않습니다.::  
+* 내가 작성한 함수들이 HTML 도움 검색 시스템에 의하여 찾아지지 않습니다.::  
+* 패키지 로딩에 실패했습니다.::  
+* 패키지 TclTk이 작동하지 않습니다.::  
+* HTML 내의 하이퍼링크가 작동하지 않습니다.::  
+* update.packages()가 작동되지 않습니다.::  
+* 저장소의 목록에 어떻게 추가할 수 있나요?::  
+* 패키지의 도움말이 보이지 않습니다.::  
+* 정적인(static) HTML페이지를 어떻게 얻을 수 있나요?::  
+* 패키지의 바이너리 버전을 어떻게 얻을 수 있나요?::  
+* 패키지 xxx가 윈도우에 대해 예전 버전입니다.::  
+* 사용 중인 R버전에서 사용 가능한 바이너리 패키지가 나타나지 않습니다.::  
+* 32비트와 64비트 R에 내 패키지를 어떻게 구축해야 하나요?::    
+@end menu
+
+
+@node 이 버전의 라이브러리에 패키지를 설치할 수 있나요?, I don't have permission to write to the \library directory, Packages, Packages
+@section 이 버전의 라이브러리에 패키지를 설치할 수 있나요?
+
+네, 하지만 CRAN내 @file{bin/windows/contrib} 섹션의 저자나 유지보수자가 윈도우를 위한 바이너리 버전이
+@code{.zip} 파일로 충분히 제공하지 않거나, 또는 패키지가 컴파일된 코드를 포함하지 않는 심플한 것(그리고 바이너리 버전들이
+보통 심플 패키지들에 대해 이용 가능한 경우)이 아니라면, 그렇게 하기 위해서는 많은 도구들이 필요합니다.
+
+You can install binary packages either from a repository such as CRAN or
+from a local @code{.zip} file by using @code{install.packages}: see its help
+page.  There are menu items on the @code{Packages} menu to provide a
+point-and-click interface to package installation.  The packages for each
+minor (4.x.?) version will be stored in a separate area, so for R 4.3.? the
+files are in @file{bin/windows/contrib/4.3}.
+
+@c Note that the binary versions on CRAN are unsupported: see
+@c @uref{https://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/4.3/@/ReadMe},
+@c which also gives the locations of a few other binary packages.
+
+If there is no binary package or that is not up-to-date or you prefer
+compiling from source, read the `R Installation and Administration' manual
+section on `Add-on Packages'.  Source packages which contain no
+C/C++/Fortran code which needs compilation can simply be installed by
+@code{install.packages(type = "source")} or @command{R CMD INSTALL pkgname}
+at a Windows command prompt.  For packages with code that needs compilation
+you will need to collect and install several tools: you can download them
+via the portal at @uref{https://CRAN.R-project.org/bin/windows/Rtools/} and
+check for more detailed instructions there. Once you have done so, just run
+@command{R CMD INSTALL pkgname} at a Windows command prompt.  To check the
+package (including running all the examples on its help pages and in its
+test suite, if any) use @command{R CMD check pkgname}: see the
+@emph{`Writing R Extensions'} manual.
+
+컴파일이 필요한 소스패키지를 설치하기 위해 윈도우를 설정하는 것은 상당히 까다로운 일임을 참고하시기 바랍니다; 반드시 매뉴얼의 설명을
+@strong{정확하게} 따라 해 주시기 바랍니다. 적어도 90%의 질문들은 사용자들이 그렇게 하지 않기 때문에 발생합니다.
+
+If you have a source package that is known to work on a Unix-alike system,
+you can try the automated Windows binary package builder documented at
+@url{https://win-builder.R-project.org}.
+
+@node I don't have permission to write to the \library directory, 설치한 패키지가 HTML 도움말 시스템에 보이지 않습니다., 이 버전의 라이브러리에 패키지를 설치할 수 있나요?, Packages
+@section I don't have permission to write to the @file{\library} directory.
+
+어디든지 패키지를 설치할 수 있으며 라이브러리의 위치를 알려주기 위해 환경변수 @env{R_LIBS} (@pxref{How do I
+set environment variables?})를 사용할 수 있습니다.
+
+@file{p:\myRlib}에 당신의 패키지가 설치되어 있다고 가정해 봅시다. 그렇다면 
+
+@example
+R을 시작하기 전에 환경변수 R_LIBS를 p:/myRlib에 지정하거나
+@end example
+
+또는 다음의 예에 의해 패키지를 사용할 수 있습니다. 예. @: 
+
+@example
+library(mypkg, lib.loc="p:/myRlib")
+@end example
+
+You can also have a personal library, which defaults to the directory
+@file{R\win-library\@var{x.y}} of your @file{$@{LOCALAPPDATA@}} directory
+(e.g. @file{C:\Users\username\AppData\Local}) for versions @var{x.y.z} since
+R 4.2.0. With older versions of R, it was a subdirectory of your home
+directory by default. This location can be changed by setting the
+environment variable @env{R_LIBS_USER}, and can be found from inside R by
+running @code{Sys.getenv("R_LIBS_USER")}.  This will only be used if it
+exists so you may need to create it: you can use
+
+@example
+dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)
+@end example
+
+@noindent
+만약 @code{install.packages}를 사용하고 메인 라이브러리나 해당 라이브러리에 쓰기가 허용되지 않는 경우, 사용자를 위한
+개인 라이브러리를 만들어야 하며 거기에 패키지를 설치해야 합니다.또한 이러한 경우는 쓰기가 허용되지 않은 라이브러리에
+@code{update.packages}가 패키지 업데이트를 제공하는 경우에도 발생할 수 있습니다.
+
+There can be additional security issues under Windows Vista and later:
+@xref{Does R run under Windows 7?}.
+
+@c In particular, the detection
+@c that a standard user has suitable permissions appears to be unreliable
+@c under Vista, so we recommend that you do create a personal directory
+@c yourself.
+
+@node 설치한 패키지가 HTML 도움말 시스템에 보이지 않습니다., 내가 작성한 함수들이 HTML 도움 검색 시스템에 의하여 찾아지지 않습니다., I don't have permission to write to the \library directory, Packages
+@section 설치한 패키지가 HTML 도움말 시스템에 보이지 않습니다.
+
+이 질문은 대체된 pre-2.10.0 HTML 도움말 시스템에 적용됩니다. 
+
+
+@node 내가 작성한 함수들이 HTML 도움 검색 시스템에 의하여 찾아지지 않습니다., 패키지 로딩에 실패했습니다., 설치한 패키지가 HTML 도움말 시스템에 보이지 않습니다., Packages
+@section 내가 작성한 함수들이 HTML 도움 검색 시스템에 의하여 찾아지지 않습니다.
+
+이 질문은 대체된 pre-2.10.0 HTML 검색 시스템에 적용됩니다. 
+
+
+@node 패키지 로딩에 실패했습니다., 패키지 TclTk이 작동하지 않습니다., 내가 작성한 함수들이 HTML 도움 검색 시스템에 의하여 찾아지지 않습니다., Packages
+@section 패키지 로딩에 실패했습니다.
+
+Is the package installed for this version of R? Packages need to have
+prepared for R 4.2.0 or later.
+
+@file{DESCRIPTION} 파일 내 @samp{Built:} 라인을 검토해 봄으로써컴파일된 패키지 버전을 알 수 있을 것입니다.
+
+For a small number of binary packages you need to install additional
+software and have its DLLs in your @code{PATH}.  Windows will normally give
+an informative message about a certain DLL not being found. See
+@uref{https://CRAN.R-project.org/@/bin/@/windows/@/contrib/@/4.3/@/ReadMe}
+for a listing of some of these packages (notably @code{RGtk2},
+@code{cairoDevice}, @code{rggobi}, @code{rJava}, @code{rjags} and some of
+the packages connecting to databases).
+
+
+@node 패키지 TclTk이 작동하지 않습니다., HTML 내의 하이퍼링크가 작동하지 않습니다., 패키지 로딩에 실패했습니다., Packages
+@section 패키지 TclTk이 작동하지 않습니다.
+
+For package @code{tcltk} to work (try @code{demo(tkdensity)} or
+@code{demo(tkttest)} after @code{library(tcltk)}) you need to have Tcl/Tk
+installed.  This is part of the R installation, so it should be there.
+
+However, if you have the environment variable @env{MY_TCLTK} set to a
+non-empty value, it is assumed that you want to use a different Tcl/Tk 8.6.x
+installation with the path to its @file{bin} directory given by value of
+@env{MY_TCLTK}, and that this is set up correctly (with @env{TCL_LIBRARY}
+set if needed).  Note that you do need 8.6.x and not 8.5.x nor 8.4.x, and
+you do need the architecture to match, that is a 32-bit or 64-bit build of
+Tcl/Tk to match the R build in use.  (There is no guarantee that a 64-bit
+build will work: it depends on the layout it uses and R 4.2 and later use a
+different layout from previous versions.)
+
+In the past several package authors have suggested using ActiveTcl
+(@uref{https://www.activestate.com/@/Products/@/activetcl/}) as a way to get
+Tcl/Tk extensions (but the support files do contain the most commonly used
+@code{TkTable} and @code{BWidget} extensions).  This could be used by
+setting (for a default install)
+
+@example
+MY_TCLTK=c:/Tcl/bin
+@end example
+
+@noindent
+@strong{but} current versions do not by default contain any extra extensions
+(although they may be downloaded via the @code{Teacup} facility) and this
+only worked for 32-bit R.
+
+As only 64-bit builds are provided as of R 4.2, the Tcl/Tk bundle used is
+now also 64-bit only.  The older combined 32-bit/64-bit bundle for R 4.1
+cannot be used with R 4.2 and later, because it has a different directory
+layout even for the 64-bit part.
+
+@node HTML 내의 하이퍼링크가 작동하지 않습니다., update.packages()가 작동되지 않습니다., 패키지 TclTk이 작동하지 않습니다., Packages
+@section HTML 내의 하이퍼링크가 작동하지 않습니다.
+
+이 질문은 2.10.0 이전의 버전에서 빈번하였습니다. 
+
+만약 HTTP 서버가 사용불가능 하다면, 여러 라이브러리에 설치된 패키지들 사이에 작동되지 않을 수 있습니다: 개선책은 서버를 사용
+가능하도록 하는 것입니다!
+
+@node update.packages()가 작동되지 않습니다., 저장소의 목록에 어떻게 추가할 수 있나요?, HTML 내의 하이퍼링크가 작동하지 않습니다., Packages
+@section @code{update.packages()}가 작동되지 않습니다.
+
+사용 중인 패키지를 업데이트 할 수 없을 수 있습니다: 패키지의 DLL이 로드되었을 때 윈도우가 락(lock)을 합니다. 그러면 새로운
+세션에서 @code{update.packages()} (또는 메뉴에서 동일한 명령)를 사용하십시오.
+
+만약 @file{.Rprofile}에 @code{library(foo)}를 넣으려면, 패키지 @code{foo}를 업데이트할 수 있도록
+@option{--vanilla}와 함께 R을 시작할 필요가 있습니다. @code{foo}를 포함하여
+@env{R_DEFAULT_PACKAGES}를 설정하려면, 일시적으로 리셋할 필요가 있습니다. 
+
+어떤 소프트웨어는 설치과정에서 남아있는 임시파일들을 막으면서 충돌이 발생한다는 보고가 있으며, @emph{Google Desktop}이
+알려진 예입니다.
+
+
+@node 저장소의 목록에 어떻게 추가할 수 있나요?, 패키지의 도움말이 보이지 않습니다., update.packages()가 작동되지 않습니다., Packages
+@section 저장소의 목록에 어떻게 추가할 수 있나요?
+
+@code{Packages}메뉴에 @code{Select repositories...} 항목과 같이 나타날 수 있나요? 
+
+이것은 사용자가 편집할 수 있고, 또는 수정된 복사본을 사용자의 홈 디렉토리(@pxref{What are HOME and working
+directories?}를 참고하십시오)내 @file{.R\repositories}에 저장할 수 있는 탭으로 구분된 파일
+@file{R_HOME\etc\repositories}로 부터 읽어옵니다. 
+
+@node 패키지의 도움말이 보이지 않습니다., 정적인(static) HTML페이지를 어떻게 얻을 수 있나요?, 저장소의 목록에 어떻게 추가할 수 있나요?, Packages
+@section 패키지의 도움말이 보이지 않습니다.
+
+R 2.10.0 이후로는 지원되지 않는 컴파일된 HTML 도움말에 대한 것입니다.
+
+@node 정적인(static) HTML페이지를 어떻게 얻을 수 있나요?, 패키지의 바이너리 버전을 어떻게 얻을 수 있나요?, 패키지의 도움말이 보이지 않습니다., Packages
+@section 정적인(static) HTML페이지를 어떻게 얻을 수 있나요?
+
+당신이 특별한 목적을 위해서 이것을 하기 원한다고 추측합니다: R의 도움말 시스템은 그것들을 사용하도록 만들지 않을 것이며, 라이브러리
+디렉토리를 통한 링크들은 작동하지 않을 것이고(R < 2.10.0과는 다르게), 모호한 링크들은 설치 시 결정될 것이며, 결여된 링크들은
+끊어질 것입니다 (런타임 시 JavaScript에 사용된 이전 버전들이 링크들을 찾습니다). 하지만, 만약 당신이 그것들을 원한다면,
+어떻게 해야 하는지 여기에 그 방법이 있습니다. 
+
+정적인 HTML 페이지들은 바이너리 배포(binary distribution)의 부분이 아니기 때문에, R 그리고/또는 패키지들을 그들의
+소스로부터 설치해야 할 필요가 있습니다. 정적인 HTML 페이지들과 여러 패키지들을 다음을 사용하여 설치하십시오. 
+
+@example
+R CMD INSTALL --html @var{pkg1} @var{pkg2} @dots{}
+@end example
+
+R자체를 정적인 HTML 페이지들과 함께 설치하기 위해서는, 사용자 스스로 소스로부터 그것을 구축할 필요가 있습니다. (이미 실행하지
+않았다면, @file{MkRules.dist}을 @file{MkRules.local}에 복사한
+후에)@file{MkRules.local}내 다음 라인의 내용을 변경하십시오. 
+
+@example
+# 정적인 HTML 도움말을 구축하기 위해 YES로 설정합니다
+BUILD_HTML = NO
+@end example
+
+@noindent
+그러고 나면 R(디폴트에 의해)의 구축에 의해 설치된 모든 패키지가 정적인 HTML 페이지와 함께 설치할 것입니다. 
+
+@node 패키지의 바이너리 버전을 어떻게 얻을 수 있나요?, 패키지 xxx가 윈도우에 대해 예전 버전입니다., 정적인(static) HTML페이지를 어떻게 얻을 수 있나요?, Packages
+@section 패키지의 바이너리 버전을 어떻게 얻을 수 있나요?
+
+CRAN, BioC 또는 유사한 저장소에서도 이용 가능하지 않은 경우 
+
+If you have a source package that is known to work on a Unix-alike system,
+you can try the automated Windows binary package builder documented at
+@url{https://win-builder.R-project.org}.  If the package is not yours,
+please remember to change the maintainer address so the results go to you
+and not the author(s)!
+
+However, if a CRAN package is not available in binary form, this usually
+means that there is a problem with some dependent package or external
+software (often mentioned in the @file{@@ReadMe} file in the binary
+repository directory).  You can email @email{R-windows@@R-project.org}
+expressing a wish for such a package to be ported---the maintainers will
+take such wishes into account when prioritizing work on binary packages.
+
+In many cases installing packages from the sources is not at all difficult
+(it is simple if the package contains no compiled code), so please attempt
+that for yourself before requesting help from the busy volunteers. See also
+Q4.1.
+
+@node 패키지 xxx가 윈도우에 대해 예전 버전입니다., 사용 중인 R버전에서 사용 가능한 바이너리 패키지가 나타나지 않습니다., 패키지의 바이너리 버전을 어떻게 얻을 수 있나요?, Packages
+@section 패키지 xxx가 윈도우에 대해 예전 버전입니다.
+
+세 가지 가능한 이유가 있습니다:
+
+You are simply impatient, and need to wait until the binary package has been
+built and propagated to the CRAN mirror you are using.  This normally (but
+not always) happens within 24 hours.  Sometimes mirrors do get behind, so
+you could try another mirror.
+
+패키지의 최신 버전은 사용자가 사용하고 있는 R 보다 최근 버전에서 요구할 수 있습니다. CRAN내 패키지 HTML 페이지에서 확인할 수
+있으며, 필요 시 R을 업데이트할 수 있습니다. 
+
+Your R might be too old.  Binary packages for the 3.6 series were built
+until Apr 2021, and were discontinued for earlier versions by early 2020.
+Packages for R 4.x are built (if possible) whilst 4.(x+1)  is current, but
+building stops once 4.(x+2) reaches alpha (pre-release, about a month before
+release).  You can always try installing from the sources.
+
+@node 사용 중인 R버전에서 사용 가능한 바이너리 패키지가 나타나지 않습니다., 32비트와 64비트 R에 내 패키지를 어떻게 구축해야 하나요?, 패키지 xxx가 윈도우에 대해 예전 버전입니다., Packages
+@section 사용 중인 R버전에서 사용 가능한 바이너리 패키지가 나타나지 않습니다.
+
+How old is it? The CRAN policy is to archive binary packages two years after
+the 3.x or 4.x series is closed.  Other repositories may do so sooner.
+
+당신이 사용하고 있는 R 버전이 그렇게 오래되었다면, 당신의 R을 업데이트 하기를 권고합니다. 하지만, 그들의 소스로부터 패키지 설치를
+할 수 있는 옵션도 있습니다.
+
+
+@node 32비트와 64비트 R에 내 패키지를 어떻게 구축해야 하나요?, , 사용 중인 R버전에서 사용 가능한 바이너리 패키지가 나타나지 않습니다., Packages
+@section 32비트와 64비트 R에 내 패키지를 어떻게 구축해야 하나요?
+
+Since R 4.2.0, 32-bit builds are no longer provided. The following
+information refers to previous versions of R.
+
+컴파일 코드나 @file{configure.win} 스크립트 없는 패키지가 32비트와 64비트 R에서 실행될 것입니다.
+
+컴파일 코드는 있지만 @file{configure.win}과 @code{src/Makefile.win} 파일이 없는 패키지는 만약 R의
+두 가지 버전이 설치되어 있다면, 64 비트 윈도우 버전에서 실행될 때 두 버전 모두를 위해 구축될 것 입니다. 
+
+빈 @file{configure.win}은 마치 존재하지 않는 것처럼 동일한 방법으로 다루어집니다.또한, @command{R CMD
+INSTALL}로 하드코드된 architecture-independent @file{configure.win}을 가진 것으로 알려진
+패키지 목록이 있으며,  이러한 패키지들을 위해서, 두 사양들은 위의 조건 하에 구축될 것입니다. 다른 패키지들은
+@option{--force-biarch}옵션을 사용함으로써 단지 첫 번째 사양을 위해서만 실행하는
+@file{configure.win}과 함께 설치될 수 있습니다.  
+
+어떤 패키지든 첫 번째 사양을 위해 설치될 수 있으며, 그 후 @option{--merge-multiarch} 옵션과 함께 다른 사양을
+위해 설치할 수 있습니다. 하지만, 패키지 소스는 반드시 tarball이어야 합니다 (그리고 전과 같이, 두 버전의 R모두 설치되어
+있는64비트 윈도우 버전에서 실행합니다.) 
+
+마지막으로, @code{src/Makefile.win} 파일이 없는 패키지와 없거나 빈 또는 architecture-independent
+@code{configure.win} 파일은 만약 64비트 요소들이 선택되었다면 R이 설치되었을 때와
+@option{--compile-both} 옵션이 주어졌을 때 32비트 윈도우로부터 두 가지 사양을 위해 설치될 수 있습니다. 말할
+필요도 없이, 32비트만을 위한 설치는 시험해 볼 수 있습니다. 
+
+@newchap{}
+@node Windows Features, Workspaces, Packages, Top
+@chapter Windows Features
+
+@menu
+* 유닉스 버전과 무엇이 다르게 작동하나요?::  
+* 일부 개선된 사항들에 대하여 들었습니다.::  
+* 화면상에서 원이 타원과 같이 보입니다.::  
+* 어떻게 포커스를 그래픽창에서 콘솔로 옮길 수 있나요?::  
+* TAB 완성이란 무엇인가요?::    
+@end menu
+
+
+@node 유닉스 버전과 무엇이 다르게 작동하나요?, 일부 개선된 사항들에 대하여 들었습니다., Windows Features, Windows Features
+@section What should I expect to behave differently from the Unix version of R?
+
+@itemize @bullet
+@item
+R commands can be interrupted by @key{Esc} in @command{Rgui.exe} and
+@key{Ctrl-break} or @key{Ctrl-C} in @command{Rterm.exe}: @key{Ctrl-C} is
+used for copying in @command{Rgui.exe}.
+
+@item
+Command-line editing is always available, but is somewhat simpler than the
+readline-based editing on Unix.  For @command{Rgui.exe}, the menu item `Help
+| Console' will give details.  For @command{Rterm.exe} see file
+@file{README.rterm}.
+
+@item Paths to files (e.g.@: in @code{source()}) can be specified with
+either "/" or "\\".
+
+@item @code{system()} is slightly different: see its help page and that
+of @code{shell()}.
+@end itemize
+
+
+@node 일부 개선된 사항들에 대하여 들었습니다., 화면상에서 원이 타원과 같이 보입니다., 유닉스 버전과 무엇이 다르게 작동하나요?, Windows Features
+@section I hear about some nifty features: please tell me about them!
+
+You have read the file @file{README.}? There are file menus on the R
+console, pager and graphics windows.  You can source and save from those
+menus, and copy the graphics to @code{png}, @code{jpeg}, @code{bmp},
+@code{postscript}, @code{PDF} or @code{metafile}.  There are right-click
+menus giving shortcuts to menu items, and optionally toolbars with buttons
+giving shortcuts to frequent operations.
+
+If you resize the R console the @code{options(width=)} is automatically set
+to the console width (unless disabled in the configuration file).
+
+The graphics has a history mechanism.  As @file{README.} says:
+
+@quotation
+`The History menu allows the recording of plots.  When plots have been
+recorded they can be reviewed by @key{PgUp} and @key{PgDn}, saved and
+replaced.  Recording can be turned on automatically (the Recording item on
+the list) or individual plots can be added (Add or the @key{INS} key).  The
+whole plot history can be saved to or retrieved from an R variable in the
+global environment.  The format of recorded plots may change between R
+versions.  Recorded plots should @strong{not} be used as a permanent storage
+format for R plots.
+
+There is only one graphics history shared by all the windows devices.'
+@end quotation
+
+@noindent
+The R console and graphics windows have configuration files stored in the
+@file{RHOME\etc} directory called @file{Rconsole} and @file{Rdevga}; you can
+keep personal copies in your @file{HOME} directory.  They contain comments
+which should suffice for you to edit them to your preferences.  For more
+details see @code{?Rconsole}.  There is a GUI preferences editor invoked
+from the @code{Edit} menu which can be used to edit the file
+@file{Rconsole}.
+
+
+@node 화면상에서 원이 타원과 같이 보입니다., 어떻게 포커스를 그래픽창에서 콘솔로 옮길 수 있나요?, 일부 개선된 사항들에 대하여 들었습니다., Windows Features
+@section Circles appear as ovals on screen.
+
+The graphics system asks Windows for the number of pixels per inch in the X
+and Y directions, and uses that to size graphics (which in R are in units of
+inches).  Sometimes the answer is a complete invention, and in any case
+Windows will not know exactly how the horizontal and vertical size have been
+set on a monitor which allows them to be adjusted.  You can specify correct
+values either in the call to @code{windows} or as options: see
+@code{?windows}.  (Typically these are of the order of 100.)
+
+On one of our systems, the screen height was reported as 240mm, and the
+width as 300mm in 1280 x 1024 mode and 320mm in 1280 x 960 and 1600 x 1200
+modes.  In fact it was a 21" monitor and 400mm x 300mm!
+
+This is less common with LCD screens but not unknown, particularly if they
+are not running at their native resolution.
+
+@node 어떻게 포커스를 그래픽창에서 콘솔로 옮길 수 있나요?, TAB 완성이란 무엇인가요?, 화면상에서 원이 타원과 같이 보입니다., Windows Features
+@section 어떻게 포커스를 그래픽창에서 콘솔로 옮길 수 있나요?
+
+You may want to do this from within a function, for example when calling
+@samp{identify} or @samp{readline}.  Use the function @samp{bringToTop()}.
+With its default argument it brings the active graphics window to the top
+and gives it focus.  With argument @samp{-1} it brings the console to the
+top and gives it focus.
+
+This works for @command{Rgui.exe} in MDI and SDI modes, and can be used for
+graphics windows from @command{Rterm.exe} (although Windows may not always
+act on it).
+
+
+@node TAB 완성이란 무엇인가요?, , 어떻게 포커스를 그래픽창에서 콘솔로 옮길 수 있나요?, Windows Features
+@section TAB 완성이란 무엇인가요?
+
+Both @command{Rgui} and @command{Rterm} support @kbd{TAB} completion.
+Hitting @kbd{TAB} whilst entering a command line completes the current
+`word' as far as is unambiguously possible.  Hitting @kbd{TAB} a second time
+then shows a list of possible completions (or the first few if there are
+many): the user can then enter one or more characters and hit @kbd{TAB}
+again.
+
+What is it `completing'? There are two modes: within an unterminated
+(single- or double-) quoted expression it completes file paths.@footnote{It
+does not have a complete understanding of Windows file paths, but can
+complete most relative or absolute file paths, including drives and
+spaces. Relative paths on drives are not handled, for example.} Otherwise,
+it is completing R expressions: most obviously it will match visible R
+object names and keywords, so @kbd{apr} followed by @kbd{TAB} will (in a
+vanilla session) complete to @code{apropos}.  After a function name and
+parenthesis (e.g.@: @kbd{apropos(}) it will complete argument names (and
+@kbd{=}), and after @kbd{$} or @kbd{@@} it will complete list components or
+slot names respectively.
+
+This feature can be turned off: @command{Rgui} has two menu items to do so,
+and setting the environment variable @env{R_COMPLETION} to @code{FALSE}
+turns it off completely for both @command{Rgui} and @command{Rterm}.
+Further, the behaviour can be fine-tuned: to see the settings available use
+
+@example
+?rc.settings
+@end example
+
+@noindent
+which also explains how the various types of completion work.
+
+This feature is very similar to the completion available in the
+@code{readline}-based command line interface on Unix-alikes: the macOS GUI
+@code{R.app} has a different completion scheme.
+
+@newchap{}
+@node Workspaces, The R Console, Windows Features, Top
+@chapter Workspaces
+
+
+@menu
+* 원하지 않는 위치에 작업공간이 저장되었습니다.  이것을 어떻게 멈추어야 하나요?::  
+* 작업공간을 어떻게 다른 위치에 저장하나요?::  
+* Can I load workspaces saved under Unix/GNU-Linux or macOS?::    
+@end menu
+
+
+@node 원하지 않는 위치에 작업공간이 저장되었습니다.  이것을 어떻게 멈추어야 하나요?, 작업공간을 어떻게 다른 위치에 저장하나요?, Workspaces, Workspaces
+@section My workspace gets saved in a strange place: how do I stop this?
+
+Have you changed the working directory?: see Q6.2.
+
+
+@node 작업공간을 어떻게 다른 위치에 저장하나요?, Can I load workspaces saved under Unix/GNU-Linux or macOS?, 원하지 않는 위치에 작업공간이 저장되었습니다.  이것을 어떻게 멈추어야 하나요?, Workspaces
+@section 작업공간을 어떻게 다른 위치에 저장하나요?
+
+Use the `File | Change Dir...' menu item to select a new working directory:
+this defaults to the last directory you loaded a file from.  The workspace
+is saved in the working directory.  You can also save a snapshot of the
+workspace from the `Save Workspace...' menu item.
+
+From the command line you can change the working directory by the function
+@code{setwd}: see its help page.
+
+
+@node Can I load workspaces saved under Unix/GNU-Linux or macOS?, , 작업공간을 어떻게 다른 위치에 저장하나요?, Workspaces
+@section Can I load workspaces saved under Unix/GNU-Linux or Mac macOS?
+
+Yes.  All ports of R use the same format for saved workspaces, so they are
+interchangeable (for the same 4.x.? version of R, at least).
+
+It is possible to save references to package namespaces when saving the
+workspace: if that happens the package will need to be installed on the
+machine loading the workspace.
+
+As of R 3.6, which uses serialization format 3 for saving the workspace by
+default, information about the current encoding is recorded in the
+workspace.
+
+Note though that character data in a workspace will be in a particular
+encoding that may not be recorded in the workspace for older versions of R,
+so workspaces containing non-@acronym{ASCII} character data may not be
+interchangeable even on the same OS.  Since R marks character data when it
+knows it to be in UTF-8 or Latin-1 (including its Windows superset, CP1252),
+strings in those encodings are likely to be transferred correctly:
+fortunately this covers most of the common cases (macOS normally uses UTF-8,
+and Linux users are likely to use UTF-8 or perhaps Latin-1).
+
+As of R 3.6, when the workspace is loaded, the characters in other encodings
+are converted to the current encoding, if possible. When this is not
+possible, such as the characters are not representable in such encodings,
+they are converted to UTF-8 with a warning, which may cause some disruption
+or confuse some software.
+
+As of R 4.2, when running on recent Windows, the native encoding is UTF-8
+and so these problems should disappear.
+
+@newchap{}
+@node The R Console, Building from Source, Workspaces, Top
+@chapter The R Console
+
+
+@menu
+* The output to the console seems to be delayed::  
+* 입력이 긴 라인이 잘려나간 것 같습니다.::    
+@end menu
+
+
+
+
+@node The output to the console seems to be delayed, 입력이 긴 라인이 잘려나간 것 같습니다., The R Console, The R Console
+@section When using Rgui the output to the console seems to be delayed.
+
+This is deliberate: the console output is buffered and re-written in chunks
+to be faster and less distracting.  You can turn buffering off or on from
+the `Misc' menu or the right-click menu: @key{Ctrl-W} toggles the setting.
+
+If you are sourcing R code or writing from a function, there is another
+option.  A call to the R function @code{flush.console()} will write out the
+buffer and so update the console.
+
+
+@node 입력이 긴 라인이 잘려나간 것 같습니다., , The output to the console seems to be delayed, The R Console
+@section Long lines in the console or pager are truncated.
+
+They only @strong{seem} to be truncated: that $ at the end indicates you can
+scroll the window to see the rest of the line.  Use the horizontal scrollbar
+or the @key{CTRL + left/right arrow} keys to scroll horizontally. (The
+@key{left/right arrow} keys work in the pager too.)
+
+
+
+@newchap{}
+@node Building from Source, , The R Console, Top
+@chapter Building from Source
+
+@menu
+* R을 소스로부터 어떻게 컴파일할 수 있나요?::  
+* fast BLAS를 사용할 수 있나요?::  
+* 컴파일된 C 코드를 어떻게 포함시키나요?::  
+* 컴파일되고 dyn.load된 코드를 어떻게 디버그 하나요?::  
+* C++ 코드를 어떻게 포함시키나요?::  
+* C 코드로부터 얻어진 출력이 보이지 않습니다.::  
+* Fortran 코드로부터 얻어진 출력이 보이지 않습니다.::  
+* 컴파일된 코드가 실행중일 때 콘솔이 작동하지 않습니다.::    
+@end menu
+
+
+@node R을 소스로부터 어떻게 컴파일할 수 있나요?, fast BLAS를 사용할 수 있나요?, Building from Source, Building from Source
+@section R을 소스로부터 어떻게 컴파일할 수 있나요?
+
+See the `R Installation and Administration' manual (for the version of R you
+want to install).
+
+@node fast BLAS를 사용할 수 있나요?, 컴파일된 C 코드를 어떻게 포함시키나요?, R을 소스로부터 어떻게 컴파일할 수 있나요?, Building from Source
+@section fast BLAS를 사용할 수 있나요?
+
+Fast BLAS (Basic Linear Algebra Subprograms,
+@uref{https://www.netlib.org/@/blas/@/faq.html}) routines are used to speed
+up numerical linear algebra.  There is support in the R sources for the
+`tuned' BLAS called ATLAS (@uref{https://math-atlas.sourceforge.net}).  The
+savings can be appreciable but because ATLAS is tuned to a particular chip
+we can't use it generally.  However, linear algebra on large matrices is not
+often an important part of R computations, and more typical calculations on
+small matrices may run slower.
+
+BLAS support is supplied by the single DLL @file{R_HOME\bin\x64\Rblas.dll},
+and you can add a fast BLAS just by replacing that.  Replacements for 32-bit
+R and some of the older common chips are available on CRAN in directory
+@file{bin/windows/contrib/ATLAS}.  See the R Installation and
+Administration' manual for how to build an ATLAS @file{Rblas.dll} tuned to
+your system using the R sources.  Unfortunately the process has been less
+successful when tried for the common current CPUs.
+
+@c Versions of Dr Kazushige Goto's BLAS (see
+@c @uref{https://en.wikipedia.org/wiki/Kazushige_Goto}) for 64-bit Windows
+@c by Ei-Ji Nakama can be found at
+@c @uref{https://prs.ism.ac.jp/~nakama/SurviveGotoBLAS2/binary/windows/x64/}.
+@c Just download the file @file{Rblas.dll} appropriate to your CPU and
+@c replace @file{@var{R_HOME}/bin/x64/Rblas.dll}.  (There is also a generic
+@c version called @samp{DYNAMIC_ARCH} that tries to adapt itself to the CPU
+@c found -- however if you know the exact CPU used it is better to download
+@c the CPU-specific version.  Note that development of that BLAS was frozen
+@c in 2010 so you will not find versions for recent CPUs.)
+
+Note that fast BLAS implementations may give different (and often slightly
+less accurate) results than the reference BLAS included in R.
+
+@node 컴파일된 C 코드를 어떻게 포함시키나요?, 컴파일되고 dyn.load된 코드를 어떻게 디버그 하나요?, fast BLAS를 사용할 수 있나요?, Building from Source
+@section 컴파일된 C 코드를 어떻게 포함시키나요?
+
+We strongly encourage you to do this @emph{via} building an R package: see
+the @emph{`Writing R Extensions'} manual.  In any event you should get and
+install the tools and toolchain mentioned in the `R Installation and
+Administration' manual.  Then you can use
+@example
+...\bin\x64\R CMD SHLIB foo.c bar.f
+@end example
+@noindent
+to make @file{foo.dll}.  Use @command{...\bin\x64\R CMD SHLIB --help} for
+further options, or see @code{?SHLIB}.
+
+@c If you want to use Visual C++, Borland C++ or other compilers, see the
+@c appropriate section in @file{README.packages}.
+
+
+
+@node 컴파일되고 dyn.load된 코드를 어떻게 디버그 하나요?, C++ 코드를 어떻게 포함시키나요?, 컴파일된 C 코드를 어떻게 포함시키나요?, Building from Source
+@section 컴파일되고 dyn.load된 코드를 어떻게 디버그 하나요?
+
+@c Debugging under Windows is often a fraught process, and sometimes does
+@c not work at all.  If all you need is a @emph{just-in-time} debugger to
+@c catch crashes, consider (32-bit) @code{Dr. Mingw} from the
+@c @code{mingw-utils} bundle on @uref{https://www.mingw.org}.  That will be
+@c able to pinpoint the error, most effectively if you build a version of R
+@c with debugging information as described below.
+
+First, build a version of the R system with debugging information by
+
+@example
+make clean
+make DEBUG=T
+@end example
+
+@noindent
+and make a debug version of your package by
+
+@example
+Rcmd INSTALL --debug mypkg
+@end example
+
+@noindent
+See the `R Installation and Administration' manual (for the version of R you
+want to install) and @uref{https://CRAN.R-project.org/bin/windows/Rtools/}
+for links to detailed information on how to build R and R packages from
+source using corresponding versions of Rtools and for additional hints for
+debugging on Windows.
+
+You will need a suitable version of @command{gdb} which matches your
+compiler.  Then you can debug by
+
+@example
+gdb /path/to//bin/x64/Rgui.exe
+@end example
+
+@noindent
+(or use @command{Rterm.exe}.)  However, note
+
+@itemize @bullet
+@item
+@command{gdb} may only be able to find the source code if we run in the
+location where the source was compiled (@file{/src/gnuwin32} for the main
+system, @file{/src/library/mypkg/src} for a package), unless told otherwise
+by the @command{directory} command.  It is most convenient to set a list of
+code locations via @command{directory} commands in the file @file{.gdbinit}
+in the directory from which @command{gdb} is run.
+
+@item
+It is only possible to set breakpoints in a DLL after the DLL has been
+loaded.  So a way to examine the function @code{tukeyline} in package
+@code{stats} might be
+
+@example
+     gdb ../../../../bin/x64/Rgui.exe
+     (gdb) break WinMain
+     (gdb) run
+     [ stops with R.dll loaded ]
+     (gdb) break R_ReadConsole
+     (gdb) continue
+     [ stops with console running ]
+     (gdb) continue
+     Rconsole> library(stats)
+     (gdb) break tukeyline
+     (gdb) clear R_ReadConsole
+     (gdb) continue
+     Rconsole> example(line)
+     ...
+@end example
+
+@noindent
+Alternatively, in @command{Rgui} you can use the `Misc|Break to debugger'
+menu item after your DLL is loaded.  The C function call
+@code{breaktodebugger()} will do the same thing.
+
+@item
+Fortran symbols need an underline appended.
+
+@item
+Windows has little support for signals, so the Unix idea of running a
+program under a debugger and sending it a signal to interrupt it and drop
+control back to the debugger does not work with a MinGW version of
+@command{gdb}.  It does often work with the @code{cygwin} version.
+
+@end itemize
+
+
+@node C++ 코드를 어떻게 포함시키나요?, C 코드로부터 얻어진 출력이 보이지 않습니다., 컴파일되고 dyn.load된 코드를 어떻게 디버그 하나요?, Building from Source
+@section C++ 코드를 어떻게 포함시키나요?
+
+You need to do two things:
+
+(a) Write a wrapper to export the symbols you want to call from R as
+@code{extern "C"}.
+
+(b) Include the C++ libraries in the link to make the DLL.  Suppose
+@file{X.cc} contains your C++ code, and @file{X_main.cc} is the wrapper, as
+in the example in @emph{`Writing R Extensions'}.  Then build the DLL by
+(@command{gcc})
+
+@example
+...\bin\x64\R CMD SHLIB X.cc X_main.cc
+@end example
+
+@noindent
+or (VC++, which requires extension @code{.cpp})
+
+@example
+cl /MT /c X.cpp X_main.cpp
+link /dll /out:X.dll /export:X_main X.obj X_main.obj
+@end example
+
+@noindent
+and call the entry point(s) in @code{X_R}, such as @code{X_main}.
+Construction of static variables will occur when the DLL is loaded, and
+destruction when the DLL is unloaded, usually when R terminates.
+
+Note that you will not see the messages from this example in the GUI
+console: see the next section.
+
+
+@node C 코드로부터 얻어진 출력이 보이지 않습니다., Fortran 코드로부터 얻어진 출력이 보이지 않습니다., C++ 코드를 어떻게 포함시키나요?, Building from Source
+@section The output from my C code disappears.  Why?
+
+The @command{Rgui.exe} console is a Windows application: writing to
+@code{stdout} or @code{stderr} will not produce output in the console.
+(This will work with @command{Rterm.exe}.)  Use @code{Rprintf} or
+@code{REprintf} instead.  These are declared in header file
+@file{R_ext/PrtUtil.h}.
+
+Note that output from the console is delayed (@pxref{The output to the
+console seems to be delayed}), so that you will not normally see any output
+before returning to the R prompt.
+
+
+@node Fortran 코드로부터 얻어진 출력이 보이지 않습니다., 컴파일된 코드가 실행중일 때 콘솔이 작동하지 않습니다., C 코드로부터 얻어진 출력이 보이지 않습니다., Building from Source
+@section The output from my Fortran code disappears.  Why?
+
+Writing to Fortran output writes to a file, not the @command{Rgui} console.
+Use one of the subroutines @code{dblepr}, @code{intpr} or @code{realpr}
+documented in the @emph{`Writing R Extensions'} manual.
+
+Note that output from the console is delayed (@pxref{The output to the
+console seems to be delayed}), so that you will not normally see any output
+before returning to the R prompt even when using the @code{xxxpr}
+subroutines.
+
+
+@node 컴파일된 코드가 실행중일 때 콘솔이 작동하지 않습니다., , Fortran 코드로부터 얻어진 출력이 보이지 않습니다., Building from Source
+@section The console freezes when my compiled code is running.
+
+The console, pagers and graphics window all run in the same thread as the R
+engine.  To allow the console etc to respond to Windows events, call
+@code{R_ProcessEvents()} periodically from your compiled code.  If you want
+output to be updated on the console, call @code{R_FlushConsole()} and then
+@code{R_ProcessEvents()}.
+
+@set LASTEDIT 2022-04-12
+@ifhtml
+@html
+ <hr WIDTH="100%"> <address> Last edited @value{LASTEDIT}: comments to
+<code><a
+href="mailto:R-windows@@R-project.org">R-windows@@R-project.org</a></code>
+</address>
+@end html
+@end ifhtml
+@ifinfo
+@sp 2
+Last edited @value{LASTEDIT}: comments to <R-windows@@R-project.org>
+@end ifinfo
+
+@bye
+
+@c Local Variables: ***
+@c mode: TeXinfo ***
+@c End: ***
